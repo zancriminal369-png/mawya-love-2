@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Memories ❤️</title>
+<title>Memories ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -12,14 +12,16 @@ body{background:#020211; color:white; font-family:'Poppins', sans-serif; min-hei
 .moon{position:fixed; top:8%; right:10%; width:45px; height:45px; background:#fff; border-radius:50%; box-shadow:0 0 20px #fff;}
 .container{max-width:900px; margin:0 auto; padding:25px 15px; position:relative; z-index:5;}
 .header{text-align:center; margin-bottom:25px;}
-.header h1{font-family:'Great Vibes', cursive; font-size:60px; text-shadow:0 0 20px #ff4d6d;}
-.header p{opacity:0.6; letter-spacing:3px; font-size:12px;}
-.gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
+.header h1{font-family:'Great Vibes', cursive; font-size:65px; text-shadow:0 0 20px #ff4d6d;}
+.header .sub{opacity:0.9; letter-spacing:1px; font-size:16px; margin-top:10px; color:#ffb3c6; font-style:italic;}
+.gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:20px;}
 .card{aspect-ratio:4/5; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);}
 .card img{width:100%; height:100%; object-fit:cover; display:block;}
-.back{text-align:center; margin-top:30px;}
-.back a{padding:11px 30px; border-radius:25px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white; text-decoration:none; letter-spacing:2px; font-size:12px;}
-@media(max-width:600px){.gallery{grid-template-columns: repeat(2, 1fr);} }
+.buttons{text-align:center; margin-top:35px; display:flex; gap:15px; justify-content:center;}
+.buttons a{padding:11px 30px; border-radius:25px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white; text-decoration:none; letter-spacing:2px; font-size:12px; transition:0.3s;}
+.buttons a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;}
+.buttons a:hover{transform:scale(1.05);}
+@media(max-width:600px){.gallery{grid-template-columns: repeat(2, 1fr);} .header h1{font-size:50px;} }
 </style>
 </head>
 <body>
@@ -28,20 +30,23 @@ body{background:#020211; color:white; font-family:'Poppins', sans-serif; min-hei
 
 <div class="container">
   <div class="header">
-    <h1>Our Memories</h1>
-    <p>MY WORLD MAWYA</p>
+    <h1>Memories</h1>
+    <p class="sub">tumi amke first agula picture dicila ❤️</p>
   </div>
 
   <div class="gallery">
-    <div class="card"><img src="1.jpg" alt="1"></div>
-    <div class="card"><img src="2.jpg" alt="2"></div>
-    <div class="card"><img src="3.jpg" alt="3"></div>
-    <div class="card"><img src="4.jpg" alt="4"></div>
-    <div class="card"><img src="5.jpg" alt="5"></div>
-    <div class="card"><img src="6.jpg" alt="6"></div>
+    <div class="card"><img src="1.jpg"></div>
+    <div class="card"><img src="2.jpg"></div>
+    <div class="card"><img src="3.jpg"></div>
+    <div class="card"><img src="4.jpg"></div>
+    <div class="card"><img src="5.jpg"></div>
+    <div class="card"><img src="6.jpg"></div>
   </div>
 
-  <div class="back"><a href="index.html">← BACK TO HOME</a></div>
+  <div class="buttons">
+    <a href="index.html">← BACK</a>
+    <a href="index.html" class="next">NEXT →</a>
+  </div>
 </div>
 </body>
 </html>
