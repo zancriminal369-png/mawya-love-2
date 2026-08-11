@@ -2,49 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Love Mawya ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100dvh; overflow:hidden; background:#050510; font-family:'Poppins', sans-serif; display:flex; align-items:center; justify-content:center;}
-.sky{position:absolute; inset:0; background: radial-gradient(ellipse at top, #1e3c72 0%, #0f0c29 55%, #02020a 100%);}
-.stars{position:absolute; inset:0; background-image: radial-gradient(1.5px 1.5px at 50px 50px, #fff, transparent), radial-gradient(1px 1px at 150px 100px, #fff, transparent); background-size:280px 280px; opacity:.7;}
-.moon{position:absolute; top:6%; right:8%; width:60px; height:60px; background: radial-gradient(circle at 30% 30%, #fff, #f5f3ce); border-radius:50%; box-shadow:0 0 25px #fff, 0 0 50px rgba(255,255,255,.4);}
-.mountain{position:absolute; bottom:0; width:100%; height:48%; background: linear-gradient(to top, #000 0%, #1a1a2e 100%); clip-path: polygon(0% 100%, 0% 68%, 18% 52%, 38% 38%, 62% 48%, 82% 32%, 100% 42%, 100% 100%); z-index:2;}
-.mountain2{position:absolute; bottom:0; width:100%; height:38%; background:#0f0c29; clip-path: polygon(0% 100%, 0% 78%, 28% 68%, 52% 82%, 72% 62%, 100% 72%, 100% 100%); opacity:.6; z-index:1;}
+body{height:100vh; overflow:hidden; background:#050510; font-family:'Poppins', sans-serif; display:flex; align-items:center; justify-content:center;}
+.sky{position:absolute; width:100%; height:100%; background: radial-gradient(ellipse at top, #1e3c72 0%, #0f0c29 50%, #02020a 100%);}
+.stars{position:absolute; width:100%; height:100%; background-image: radial-gradient(1.5px 1.5px at 50px 50px, #fff, transparent), radial-gradient(1px 1px at 150px 100px, #fff, transparent), radial-gradient(1.2px 1.2px at 250px 200px, #fff, transparent); background-size:300px 300px; opacity:0.8;}
+.moon{position:absolute; top:10%; right:12%; width:70px; height:70px; background: radial-gradient(circle at 30% 30%, #fff, #f5f3ce); border-radius:50%; box-shadow:0 0 30px #fff, 0 0 60px rgba(255,255,255,0.5);}
+.mountain{position:absolute; bottom:0; width:100%; height:50%; background: linear-gradient(to top, #000000 0%, #1a1a2e 100%); clip-path: polygon(0% 100%, 0% 65%, 20% 50%, 40% 35%, 60% 45%, 80% 30%, 100% 40%, 100% 100%); z-index:2;}
+.mountain2{position:absolute; bottom:0; width:100%; height:40%; background:#0f0c29; clip-path: polygon(0% 100%, 0% 75%, 30% 65%, 50% 80%, 70% 60%, 100% 70%, 100% 100%); opacity:0.6; z-index:1;}
 
-.main{position:relative; z-index:10; width:100%; max-width:400px; padding:20px; display:flex; flex-direction:column; align-items:center; text-align:center;}
-
-/* Couple Silhouette Circle */
+/* Couple Pic */
 .couple-frame{
-  width: clamp(150px, 48vw, 190px); height: clamp(150px, 48vw, 190px);
-  border-radius:50%; padding:4px;
-  background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
-  box-shadow: 0 0 20px #ff4d6d, 0 0 40px rgba(255,77,109,.4);
+  position:relative; z-index:5; width:170px; height:170px; border-radius:50%;
+  padding:4px; background: linear-gradient(45deg, #ff4d6d, #ff8fa3, #ffd6e0);
+  box-shadow: 0 0 20px #ff4d6d, 0 0 40px rgba(255,77,109,0.5);
   animation: floatPic 3s ease-in-out infinite;
-  margin-bottom:18px; overflow:hidden; position:relative;
-  background-color:#0a0a1a;
+  margin-top:-20vh;
 }
-.couple-art{
-  width:100%; height:100%; border-radius:50%; background: radial-gradient(circle at 50% 30%, #1a1a3a 0%, #0a0a1a 70%);
-  display:flex; align-items:flex-end; justify-content:center; position:relative;
+.couple-frame img{width:100%; height:100%; border-radius:50%; object-fit:cover; border:3px solid #02020a;}
+.couple-frame::after{
+  content:'❤'; position:absolute; bottom:5px; right:5px; background:#ff4d6d; color:white;
+  width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:16px; box-shadow:0 0 10px #ff4d6d;
 }
-/* SVG couple holding hands */
-.couple-art svg{ width:85%; height:85%; margin-bottom:5%; filter: drop-shadow(0 0 8px rgba(255,77,109,0.5)); }
+@keyframes floatPic{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
-@keyframes floatPic{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-.main h1{font-family:'Great Vibes', cursive; font-size: clamp(42px, 12vw, 70px); color:#fff; text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d; line-height:1.1;}
-.main p{color:rgba(255,255,255,.75); letter-spacing:2px; font-size: clamp(11px, 3vw, 13px); margin-top:8px;}
-.next-btn{margin-top:22px; padding:12px 38px; background: rgba(255,77,109,.15); border:1px solid #ff8fa3; color:#ffd6e0; border-radius:30px; letter-spacing:2px; font-size:13px; backdrop-filter: blur(10px); text-decoration:none; transition:.3s; display:inline-block;}
-.next-btn:hover{ background:#ff4d6d; color:#fff; box-shadow:0 0 20px #ff4d6d; transform:scale(1.05) }
+.content{position:absolute; z-index:10; text-align:center; margin-top:18vh;}
+.content h1{
+  font-family:'Great Vibes', cursive; font-size: clamp(50px, 12vw, 90px);
+  color:#fff; text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+@keyframes glowText{ 0%{text-shadow:0 0 15px #ff4d6d} 100%{text-shadow:0 0 25px #ff4d6d, 0 0 45px #ff4d6d} }
+.content p{color:rgba(255,255,255,0.8); letter-spacing:3px; font-size:13px; margin-top:5px;}
 
-.firefly{position:absolute; width:3px; height:3px; background:#ffffa6; border-radius:50%; box-shadow: 0 0 6px #ffff00, 0 0 12px #ffff00; animation: blink 1.2s ease-in-out infinite alternate; z-index:4;}
-@keyframes blink{ 0%{opacity:.2} 100%{opacity:1; box-shadow:0 0 10px #ffff00, 0 0 20px #ffff00} }
+/* Jonaki Poka - jolbe nivbe */
+.firefly{
+  position:absolute; width:4px; height:4px; background:#ffffa6; border-radius:50%;
+  box-shadow: 0 0 6px #ffff00, 0 0 12px #ffff00, 0 0 20px #ffff00;
+  animation: flyMove linear infinite, blink 1.5s ease-in-out infinite alternate;
+  z-index:4;
+}
+@keyframes flyMove{
+  0%{transform: translate(0,0)}
+  25%{transform: translate(100px, -80px)}
+  50%{transform: translate(-50px, -150px)}
+  75%{transform: translate(80px, -50px)}
+  100%{transform: translate(0,0)}
+}
+@keyframes blink{ 0%{opacity:0.2; box-shadow:0 0 2px #ffff00} 100%{opacity:1; box-shadow:0 0 10px #ffff00, 0 0 20px #ffff00} }
 
-.flowers-bed{position:absolute; bottom:0; left:0; width:100%; height:75px; z-index:6; display:flex; justify-content:space-around; align-items:flex-end; padding:0 5px 8px 5px; pointer-events:none;}
-.flower-bunch{font-size: clamp(20px, 6vw, 28px); animation: sway 2.2s ease-in-out infinite; line-height:1;}
-@keyframes sway{ 0%,100%{transform: rotate(-6deg) translateY(0)} 50%{transform: rotate(6deg) translateY(-4px)} }
+/* Ful gula thoka thoka + nora */
+.flowers-bed{
+  position:absolute; bottom:0; width:100%; height:90px; z-index:6;
+  display:flex; justify-content:center; gap:15px; align-items:flex-end; padding-bottom:10px;
+}
+.flower-bunch{
+  font-size:32px; animation: sway 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255,77,109,0.5));
+}
+.flower-bunch:nth-child(odd){ animation-delay:0.5s }
+.flower-bunch:nth-child(3n){ animation-delay:1s }
+@keyframes sway{ 0%,100%{transform: rotate(-5deg) translateY(0)} 50%{transform: rotate(5deg) translateY(-5px)} }
+
+.next-btn{
+  margin-top:20px; padding:10px 35px; background: rgba(255,77,109,0.15);
+  border:1px solid #ff8fa3; color:#ffd6e0; border-radius:30px;
+  letter-spacing:2px; font-size:13px; backdrop-filter: blur(10px);
+  text-decoration:none; display:inline-block; transition:0.3s;
+}
+.next-btn:hover{ background:#ff4d6d; color:white; box-shadow:0 0 20px #ff4d6d }
 </style>
 </head>
 <body>
@@ -54,44 +84,37 @@ body{min-height:100dvh; overflow:hidden; background:#050510; font-family:'Poppin
 <div class="mountain2"></div>
 <div class="mountain"></div>
 
-<div class="main">
-  <div class="couple-frame">
-    <div class="couple-art">
-      <!-- Chele Meye hat dhore jacche - silhouette -->
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Meye -->
-        <circle cx="35" cy="22" r="8" fill="black"/>
-        <path d="M22 30 Q35 15 48 30 Q45 38 22 38 Z" fill="black"/>
-        <path d="M28 35 Q32 55 30 70 Q28 75 32 75 Q35 60 40 50 Q45 60 48 75 Q52 75 50 70 Q48 50 42 35 Z" fill="black"/>
-        <!-- Chele -->
-        <circle cx="65" cy="20" r="8" fill="black"/>
-        <path d="M55 30 L75 30 L73 65 L70 75 L66 75 L68 60 L62 60 L64 75 L60 75 L58 30 Z" fill="black"/>
-        <!-- Hat dhora -->
-        <line x1="42" y1="45" x2="58" y2="42" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="50" cy="43" r="2" fill="#ff4d6d"/>
-      </svg>
-    </div>
+<!-- Couple Chobi -->
+<div class="couple-frame">
+  <img src="couple.jpg" alt="Me & Mawya" onerror="this.src='https://i.imgur.com/8Km9tLL.png'">
+</div>
+
+<div class="content">
   <h1>My Love Mawya</h1>
-  <p>YOU & ME FOREVER ❤️</p>
+  <p>YOU ARE MY WHOLE WORLD ❤️</p>
   <a href="next.html" class="next-btn">NEXT →</a>
 </div>
 
 <div class="flowers-bed">
-  <div class="flower-bunch">🌷</div>
-  <div class="flower-bunch">🌸💐</div>
+  <div class="flower-bunch">💐</div>
+  <div class="flower-bunch">🌷🌸</div>
   <div class="flower-bunch">🌹</div>
   <div class="flower-bunch">🌺🌷</div>
   <div class="flower-bunch">💐</div>
-  <div class="flower-bunch">🌸</div>
+  <div class="flower-bunch">🌸🌹</div>
+  <div class="flower-bunch">🌷</div>
+  <div class="flower-bunch">🌺💐</div>
 </div>
 
 <script>
-for(let i=0;i<22;i++){
-  let f=document.createElement('div');
+// Jonaki poka banano
+for(let i=0;i<25;i++){
+  let f = document.createElement('div');
   f.className='firefly';
-  f.style.left=Math.random()*100+'vw';
-  f.style.top=Math.random()*75+'vh';
-  f.style.animationDelay=Math.random()*2+'s';
+  f.style.left = Math.random()*100 + 'vw';
+  f.style.top = Math.random()*70 + 'vh';
+  f.style.animationDuration = (8+Math.random()*10)+'s, '+(0.8+Math.random()*1.5)+'s';
+  f.style.animationDelay = Math.random()*5+'s, '+Math.random()*2+'s';
   document.body.appendChild(f);
 }
 </script>
