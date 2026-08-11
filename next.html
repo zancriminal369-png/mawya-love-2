@@ -7,36 +7,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020211; font-family:'Poppins', sans-serif; color:white; min-height:100vh;}
+body{background:#020211; color:white; font-family:'Poppins', sans-serif; min-height:100vh;}
 .sky{position:fixed; inset:0; background: radial-gradient(ellipse at top, #1a2a5e 0%, #0a1128 50%, #020211 100%); z-index:-2;}
-.moon{position:fixed; top:8%; right:10%; width:45px; height:45px; background:#fff; border-radius:50%; box-shadow:0 0 20px #fff; z-index:-1;}
+.moon{position:fixed; top:8%; right:10%; width:45px; height:45px; background:#fff; border-radius:50%; box-shadow:0 0 20px #fff;}
 .container{max-width:900px; margin:0 auto; padding:25px 15px; position:relative; z-index:5;}
 .header{text-align:center; margin-bottom:25px;}
-.header h1{font-family:'Great Vibes', cursive; font-size: clamp(40px, 10vw, 65px); text-shadow:0 0 20px #ff4d6d;}
+.header h1{font-family:'Great Vibes', cursive; font-size:60px; text-shadow:0 0 20px #ff4d6d;}
 .header p{opacity:0.6; letter-spacing:3px; font-size:12px;}
-
 .gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
-.card{aspect-ratio:4/5; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); position:relative;}
-.card img{width:100%; height:100%; object-fit:cover;}
-.placeholder{width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#111; color:#777; font-size:12px;}
-.placeholder span{font-size:28px; margin-bottom:5px;}
-
-.music-control{position:fixed; bottom:20px; right:20px; z-index:99; background:#ff4d6d; width:50px; height:50px; border-radius:50%; border:none; color:white; font-size:22px; box-shadow:0 0 20px #ff4d6d; cursor:pointer;}
-
+.card{aspect-ratio:4/5; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);}
+.card img{width:100%; height:100%; object-fit:cover; display:block;}
 .back{text-align:center; margin-top:30px;}
 .back a{padding:11px 30px; border-radius:25px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white; text-decoration:none; letter-spacing:2px; font-size:12px;}
-
 @media(max-width:600px){.gallery{grid-template-columns: repeat(2, 1fr);} }
 </style>
 </head>
 <body>
 <div class="sky"></div>
 <div class="moon"></div>
-
-<audio id="music" loop autoplay>
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8c8a64d69a.mp3?filename=romantic-love-piano-123949.mp3" type="audio/mpeg">
-</audio>
-<button class="music-control" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
 <div class="container">
   <div class="header">
@@ -45,27 +33,15 @@ body{background:#020211; font-family:'Poppins', sans-serif; color:white; min-hei
   </div>
 
   <div class="gallery">
-    <div class="card"><img src="1.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>1.jpg add koro</div></div>
-    <div class="card"><img src="2.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>2.jpg add koro</div></div>
-    <div class="card"><img src="3.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>3.jpg add koro</div></div>
-    <div class="card"><img src="4.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>4.jpg add koro</div></div>
-    <div class="card"><img src="5.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>5.jpg add koro</div></div>
-    <div class="card"><img src="6.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none"><span>📸</span>6.jpg add koro</div></div>
+    <div class="card"><img src="1.jpg" alt="1"></div>
+    <div class="card"><img src="2.jpg" alt="2"></div>
+    <div class="card"><img src="3.jpg" alt="3"></div>
+    <div class="card"><img src="4.jpg" alt="4"></div>
+    <div class="card"><img src="5.jpg" alt="5"></div>
+    <div class="card"><img src="6.jpg" alt="6"></div>
   </div>
 
   <div class="back"><a href="index.html">← BACK TO HOME</a></div>
 </div>
-
-<script>
-let mus=document.getElementById('music');
-let btn=document.getElementById('musicBtn');
-let play=true;
-function toggleMusic(){
-  if(play){mus.pause(); btn.innerHTML='🔇'; play=false;}
-  else{mus.play(); btn.innerHTML='🎵'; play=true;}
-}
-// Mobile e auto play block hole first click e bajbe
-document.body.addEventListener('click', ()=>{ if(mus.paused){ mus.play().catch(()=>{}); } }, {once:true});
-</script>
 </body>
 </html>
