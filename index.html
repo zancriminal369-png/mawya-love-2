@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mawya ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    height:100vh; overflow:hidden;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; color:white;
+    font-family:'Poppins', sans-serif;
+  }
+  .stars{
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+    animation: moveStars 200s linear infinite;
+  }
+  @keyframes moveStars{ from{background-position:0 0} to{background-position:-10000px 5000px} }
+
+  h1{
+    font-family:'Great Vibes', cursive;
+    font-size: clamp(60px, 15vw, 120px);
+    font-weight:400;
+    background: linear-gradient(180deg, #fff, #ffafcc);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    filter: drop-shadow(0 0 20px #ff4d6d) drop-shadow(0 0 40px #ff4d6d);
+    animation: glow 3s ease-in-out infinite alternate, fadeUp 2s ease-out;
+    z-index:2;
+  }
+  @keyframes glow{
+    0%{filter: drop-shadow(0 0 20px #ff4d6d) drop-shadow(0 0 30px #ff4d6d);}
+    100%{filter: drop-shadow(0 0 30px #ff4d6d) drop-shadow(0 0 60px #ff4d6d);}
+  }
+  @keyframes fadeUp{
+    0%{opacity:0; transform:translateY(50px)}
+    100%{opacity:1; transform:translateY(0)}
+  }
+  p{
+    margin-top:10px; letter-spacing:5px; font-weight:300; opacity:.7;
+    animation: fadeUp 2s ease-out 0.5s both;
+    z-index:2;
+  }
+  .hearts{ position:fixed; width:100%; height:100%; pointer-events:none; z-index:1 }
+  .heart{
+    position:absolute; bottom:-20px; color:#ff4d6d;
+    animation: floatUp linear infinite;
+    text-shadow: 0 0 10px #ff4d6d;
+  }
+  @keyframes floatUp{
+    0%{ transform:translateY(0) translateX(0) scale(0.5) rotate(0deg); opacity:0 }
+    10%{ opacity:1 }
+    90%{ opacity:1 }
+    100%{ transform:translateY(-110vh) translateX(100px) scale(1.2) rotate(360deg); opacity:0 }
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="hearts" id="hearts"></div>
+<h1>Mawya</h1>
+<p>I MADE THE STARS FOR YOU</p>
+
+<script>
+const container = document.getElementById('hearts');
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.fontSize = (Math.random()*15 + 10) + 'px';
+  heart.style.animationDuration = (Math.random()*5 + 5) + 's';
+  heart.style.animationDelay = Math.random()*2 + 's';
+  container.appendChild(heart);
+  setTimeout(()=>heart.remove(), 10000);
+}
+setInterval(createHeart, 200);
+for(let i=0;i<20;i++) createHeart();
+</script>
+</body>
+</html>
