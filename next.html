@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Memories ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh; background:#020211; font-family:'Poppins', sans-serif; overflow-x:hidden; color:white;}
+.sky{position:fixed; inset:0; background: radial-gradient(ellipse at top, #1a2a5e 0%, #0a1128 50%, #020211 100%); z-index:-3;}
+#stars{position:fixed; inset:0; z-index:-2;}
+.star{position:absolute; background:white; border-radius:50%; animation: twinkle 2.5s ease-in-out infinite alternate;}
+@keyframes twinkle{0%{opacity:0.2} 100%{opacity:1}}
+.moon{position:fixed; top:8%; right:10%; width:50px; height:50px; background: radial-gradient(circle at 30% 30%, #fff, #fef9d7); border-radius:50%; box-shadow:0 0 20px #fff; z-index:-1;}
+
+.container{ max-width:900px; margin:0 auto; padding:30px 15px 40px 15px; position:relative; z-index:5;}
+.header{ text-align:center; margin-bottom:30px; }
+.header h1{ font-family:'Great Vibes', cursive; font-size: clamp(42px, 10vw, 70px); text-shadow:0 0 20px #ff4d6d; }
+.header p{ color:rgba(255,255,255,0.6); letter-spacing:3px; font-size:12px; margin-top:5px; }
+
+.gallery{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap:15px;
+}
+.card{
+  aspect-ratio: 4/5; border-radius:18px; overflow:hidden; position:relative;
+  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px); cursor:pointer; transition:0.4s;
+}
+.card img{ width:100%; height:100%; object-fit:cover; transition:0.5s; }
+.card:hover{ transform: translateY(-5px) scale(1.02); box-shadow:0 15px 35px rgba(255,77,109,0.3); border-color:#ff8fa3; }
+.card:hover img{ transform:scale(1.1); }
+.card::after{
+  content:'❤'; position:absolute; bottom:10px; right:10px; width:28px; height:28px;
+  background:rgba(255,77,109,0.8); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px;
+}
+.placeholder{
+  width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, #1a1a2e, #0f0c29); color:rgba(255,255,255,0.5); font-size:13px;
+}
+.placeholder span{ font-size:30px; margin-bottom:8px; }
+
+.buttons{ display:flex; gap:15px; justify-content:center; margin-top:35px; flex-wrap:wrap; }
+.btn{
+  padding:12px 32px; border-radius:30px; text-decoration:none; letter-spacing:2px; font-size:13px; transition:0.3s; backdrop-filter:blur(10px);
+}
+.btn-back{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); color:white; }
+.btn-next{ background:#ff4d6d; border:1px solid #ff4d6d; color:white; box-shadow:0 0 20px rgba(255,77,109,0.4); }
+.btn:hover{ transform:scale(1.05); }
+
+/* Lightbox */
+.lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
+.lightbox.active{ display:flex; }
+.lightbox img{ max-width:95%; max-height:85vh; border-radius:15px; box-shadow:0 0 40px rgba(255,77,109,0.5); }
+.lightbox .close{ position:absolute; top:20px; right:20px; font-size:30px; color:white; cursor:pointer; }
+
+@media (max-width:600px){ .gallery{ grid-template-columns: repeat(2, 1fr); gap:12px; } }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+<div class="moon"></div>
+<div id="stars"></div>
+
+<div class="container">
+  <div class="header">
+    <h1>Our Memories</h1>
+    <p>ME & MY WORLD MAWYA</p>
+  </div>
+
+  <div class="gallery">
+    <!-- 6 ta card - chobi thakle dekhabe, na thakle placeholder -->
+    <div class="card" onclick="openImg(this)"><img src="1.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 1.jpg</div>'"></div>
+    <div class="card" onclick="openImg(this)"><img src="2.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 2.jpg</div>'"></div>
+    <div class="card" onclick="openImg(this)"><img src="3.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 3.jpg</div>'"></div>
+    <div class="card" onclick="openImg(this)"><img src="4.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 4.jpg</div>'"></div>
+    <div class="card" onclick="openImg(this)"><img src="5.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 5.jpg</div>'"></div>
+    <div class="card" onclick="openImg(this)"><img src="6.jpg" onerror="this.parentElement.innerHTML='<div class=placeholder><span>📸</span>Add 6.jpg</div>'"></div>
+  </div>
+
+  <div class="buttons">
+    <a href="index.html" class="btn btn-back">← BACK</a>
+    <a href="letter.html" class="btn btn-next">CHITHI →</a>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+  <span class="close">×</span>
+  <img id="lightImg" src="">
+</div>
+
+<script>
+// Tara
+const c=document.getElementById('stars');
+for(let i=0;i<70;i++){let s=document.createElement('div'); s.className='star'; let sz=Math.random()*2+0.5; s.style.width=sz+'px'; s.style.height=sz+'px'; s.style.left=Math.random()*100+'vw'; s.style.top=Math.random()*100+'vh'; s.style.animationDelay=Math.random()*3+'s'; c.appendChild(s);}
+// Lightbox
+function openImg(card){let img=card.querySelector('img'); if(!img) return; document.getElementById('lightImg').src=img.src; document.getElementById('lightbox').classList.add('active');}
+function closeImg(){document.getElementById('lightbox').classList.remove('active');}
+</script>
+</body>
+</html>
