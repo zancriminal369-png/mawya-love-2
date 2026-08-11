@@ -3,119 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Love Mawya ❤️</title>
+<title>My World Mawya ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{height:100vh; overflow:hidden; background:#050510; font-family:'Poppins', sans-serif; display:flex; align-items:center; justify-content:center;}
-.sky{position:absolute; width:100%; height:100%; background: radial-gradient(ellipse at top, #1e3c72 0%, #0f0c29 50%, #02020a 100%);}
-.stars{position:absolute; width:100%; height:100%; background-image: radial-gradient(1.5px 1.5px at 50px 50px, #fff, transparent), radial-gradient(1px 1px at 150px 100px, #fff, transparent), radial-gradient(1.2px 1.2px at 250px 200px, #fff, transparent); background-size:300px 300px; opacity:0.8;}
-.moon{position:absolute; top:10%; right:12%; width:70px; height:70px; background: radial-gradient(circle at 30% 30%, #fff, #f5f3ce); border-radius:50%; box-shadow:0 0 30px #fff, 0 0 60px rgba(255,255,255,0.5);}
-.mountain{position:absolute; bottom:0; width:100%; height:50%; background: linear-gradient(to top, #000000 0%, #1a1a2e 100%); clip-path: polygon(0% 100%, 0% 65%, 20% 50%, 40% 35%, 60% 45%, 80% 30%, 100% 40%, 100% 100%); z-index:2;}
-.mountain2{position:absolute; bottom:0; width:100%; height:40%; background:#0f0c29; clip-path: polygon(0% 100%, 0% 75%, 30% 65%, 50% 80%, 70% 60%, 100% 70%, 100% 100%); opacity:0.6; z-index:1;}
-
-/* Couple Pic */
-.couple-frame{
-  position:relative; z-index:5; width:170px; height:170px; border-radius:50%;
-  padding:4px; background: linear-gradient(45deg, #ff4d6d, #ff8fa3, #ffd6e0);
-  box-shadow: 0 0 20px #ff4d6d, 0 0 40px rgba(255,77,109,0.5);
-  animation: floatPic 3s ease-in-out infinite;
-  margin-top:-20vh;
+body{
+  min-height:100dvh; background:#020211; overflow:hidden;
+  font-family:'Poppins', sans-serif; display:flex;
+  align-items:center; justify-content:center;
 }
-.couple-frame img{width:100%; height:100%; border-radius:50%; object-fit:cover; border:3px solid #02020a;}
-.couple-frame::after{
-  content:'❤'; position:absolute; bottom:5px; right:5px; background:#ff4d6d; color:white;
-  width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:16px; box-shadow:0 0 10px #ff4d6d;
-}
-@keyframes floatPic{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
-.content{position:absolute; z-index:10; text-align:center; margin-top:18vh;}
+/* Akash */
+.sky{
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at top, #142850 0%, #0a1931 40%, #020211 100%);
+}
+.moon{
+  position:absolute; top:10%; right:50%; transform:translateX(50%);
+  width:75px; height:75px;
+  background: radial-gradient(circle at 35% 35%, #fff, #f9f3d5, #e6dca0);
+  border-radius:50%;
+  box-shadow: 0 0 30px #fff, 0 0 60px rgba(255,255,255,0.4), 0 0 100px rgba(255,255,255,0.15);
+}
+.moon::after{
+  content:''; position:absolute; top:15%; left:20%; width:18px; height:18px;
+  background: rgba(0,0,0,0.08); border-radius:50%;
+  box-shadow: 15px 10px 0 -2px rgba(0,0,0,0.06), 8px 25px 0 -1px rgba(0,0,0,0.05);
+}
+
+/* Tara */
+.star{position:absolute; background:white; border-radius:50%; animation: twinkle 2s ease-in-out infinite alternate;}
+@keyframes twinkle{0%{opacity:0.3} 100%{opacity:1}}
+
+/* Mati */
+.ground{
+  position:absolute; bottom:0; width:100%; height:32%;
+  background: linear-gradient(to top, #0a1f0a 0%, #123412 40%, #1a4d1a 100%);
+  z-index:2;
+}
+
+/* Boro Gach */
+.tree{
+  position:absolute; bottom:32%; z-index:3;
+  display:flex; flex-direction:column; align-items:center;
+}
+.tree-trunk{ width:14px; background:#2b1a0e; border-radius:3px; }
+.tree-leaves{
+  width:80px; height:90px; background: radial-gradient(circle at 30% 30%, #2d6a2d, #0f2f0f);
+  border-radius:50% 50% 40% 40% / 60% 60% 40% 40%;
+  margin-bottom:-5px; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5);
+}
+.tree.big .tree-trunk{ height:110px; width:18px; }
+.tree.big .tree-leaves{ width:110px; height:120px; }
+.tree.small .tree-trunk{ height:75px; width:12px; }
+.tree.small .tree-leaves{ width:65px; height:75px; }
+
+/* Gach position */
+.tree.t1{ left:5%; }
+.tree.t2{ left:18%; bottom:33%; }
+.tree.t3{ right:8%; }
+.tree.t4{ right:20%; bottom:34%; }
+.tree.t5{ left:42%; bottom:31%; opacity:0.7; }
+.tree.t6{ right:38%; bottom:32%; opacity:0.6; }
+
+/* Fuler Bagan */
+.garden{
+  position:absolute; bottom:5%; width:100%; z-index:4;
+  display:flex; justify-content:center; flex-wrap:wrap; gap:8px 15px;
+  padding:0 15px;
+}
+.flower{
+  font-size:26px; animation: bloom 3s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+.flower:nth-child(2n){ animation-delay:0.5s }
+.flower:nth-child(3n){ animation-delay:1s }
+.flower:nth-child(4n){ animation-delay:1.5s }
+@keyframes bloom{ 0%,100%{transform: scale(1) rotate(-2deg)} 50%{transform: scale(1.1) rotate(2deg)} }
+
+/* Lekha */
+.content{
+  position:relative; z-index:10; text-align:center;
+  margin-top:-18vh; padding:20px;
+}
 .content h1{
-  font-family:'Great Vibes', cursive; font-size: clamp(50px, 12vw, 90px);
-  color:#fff; text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d;
-  animation: glowText 2s ease-in-out infinite alternate;
+  font-family:'Great Vibes', cursive;
+  font-size: clamp(48px, 14vw, 85px);
+  color:#fff; line-height:1.1;
+  text-shadow: 0 0 15px #ff9eb1, 0 0 35px #ff4d6d, 0 2px 10px rgba(0,0,0,0.5);
 }
-@keyframes glowText{ 0%{text-shadow:0 0 15px #ff4d6d} 100%{text-shadow:0 0 25px #ff4d6d, 0 0 45px #ff4d6d} }
-.content p{color:rgba(255,255,255,0.8); letter-spacing:3px; font-size:13px; margin-top:5px;}
-
-/* Jonaki Poka - jolbe nivbe */
-.firefly{
-  position:absolute; width:4px; height:4px; background:#ffffa6; border-radius:50%;
-  box-shadow: 0 0 6px #ffff00, 0 0 12px #ffff00, 0 0 20px #ffff00;
-  animation: flyMove linear infinite, blink 1.5s ease-in-out infinite alternate;
-  z-index:4;
+.content p{
+  margin-top:8px; color:rgba(255,255,255,0.7);
+  letter-spacing:4px; font-size:11px;
 }
-@keyframes flyMove{
-  0%{transform: translate(0,0)}
-  25%{transform: translate(100px, -80px)}
-  50%{transform: translate(-50px, -150px)}
-  75%{transform: translate(80px, -50px)}
-  100%{transform: translate(0,0)}
-}
-@keyframes blink{ 0%{opacity:0.2; box-shadow:0 0 2px #ffff00} 100%{opacity:1; box-shadow:0 0 10px #ffff00, 0 0 20px #ffff00} }
-
-/* Ful gula thoka thoka + nora */
-.flowers-bed{
-  position:absolute; bottom:0; width:100%; height:90px; z-index:6;
-  display:flex; justify-content:center; gap:15px; align-items:flex-end; padding-bottom:10px;
-}
-.flower-bunch{
-  font-size:32px; animation: sway 2.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 5px rgba(255,77,109,0.5));
-}
-.flower-bunch:nth-child(odd){ animation-delay:0.5s }
-.flower-bunch:nth-child(3n){ animation-delay:1s }
-@keyframes sway{ 0%,100%{transform: rotate(-5deg) translateY(0)} 50%{transform: rotate(5deg) translateY(-5px)} }
-
 .next-btn{
-  margin-top:20px; padding:10px 35px; background: rgba(255,77,109,0.15);
-  border:1px solid #ff8fa3; color:#ffd6e0; border-radius:30px;
-  letter-spacing:2px; font-size:13px; backdrop-filter: blur(10px);
-  text-decoration:none; display:inline-block; transition:0.3s;
+  margin-top:28px; display:inline-block;
+  padding:13px 42px; border-radius:50px;
+  background: rgba(255,255,255,0.08);
+  border:1.5px solid rgba(255,175,204,0.6);
+  color:#ffd6e0; text-decoration:none; letter-spacing:3px; font-size:13px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(255,77,109,0.25), inset 0 0 10px rgba(255,255,255,0.1);
+  transition:0.3s;
 }
-.next-btn:hover{ background:#ff4d6d; color:white; box-shadow:0 0 20px #ff4d6d }
+.next-btn:hover{ background:#ff4d6d; border-color:#ff4d6d; color:white; box-shadow:0 0 30px #ff4d6d; transform:scale(1.05); }
+
+/* Mobile */
+@media (max-width: 600px){
+  .tree.t5, .tree.t6{ display:none }
+  .tree.big .tree-leaves{ width:85px; height:95px }
+  .tree.big .tree-trunk{ height:85px }
+  .garden{ bottom:3%; gap:6px 10px }
+  .flower{ font-size:20px }
+}
 </style>
 </head>
 <body>
-<div class="sky"></div>
-<div class="stars"></div>
-<div class="moon"></div>
-<div class="mountain2"></div>
-<div class="mountain"></div>
 
-<!-- Couple Chobi -->
-<div class="couple-frame">
-  <img src="couple.jpg" alt="Me & Mawya" onerror="this.src='https://i.imgur.com/8Km9tLL.png'">
+<div class="sky"></div>
+<div class="moon"></div>
+
+<!-- Tara JS diye banabo -->
+<div id="stars"></div>
+
+<!-- Boro Gach Gula -->
+<div class="tree big t1"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+<div class="tree small t2"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+<div class="tree big t3"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+<div class="tree small t4"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+<div class="tree small t5"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+<div class="tree small t6"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
+
+<div class="ground"></div>
+
+<!-- Fuler Bagan -->
+<div class="garden">
+  <span class="flower">🌷</span><span class="flower">🌸</span><span class="flower">🌹</span><span class="flower">🌺</span><span class="flower">💐</span><span class="flower">🌷</span><span class="flower">🌸</span><span class="flower">🌻</span><span class="flower">🌹</span><span class="flower">🌺</span><span class="flower">🌷</span><span class="flower">💐</span><span class="flower">🌸</span><span class="flower">🌹</span>
 </div>
 
+<!-- Lekha -->
 <div class="content">
-  <h1>My Love Mawya</h1>
-  <p>YOU ARE MY WHOLE WORLD ❤️</p>
+  <h1>My World Mawya</h1>
+  <p>YOU ARE MY EVERYTHING</p>
   <a href="next.html" class="next-btn">NEXT →</a>
 </div>
 
-<div class="flowers-bed">
-  <div class="flower-bunch">💐</div>
-  <div class="flower-bunch">🌷🌸</div>
-  <div class="flower-bunch">🌹</div>
-  <div class="flower-bunch">🌺🌷</div>
-  <div class="flower-bunch">💐</div>
-  <div class="flower-bunch">🌸🌹</div>
-  <div class="flower-bunch">🌷</div>
-  <div class="flower-bunch">🌺💐</div>
-</div>
-
 <script>
-// Jonaki poka banano
-for(let i=0;i<25;i++){
-  let f = document.createElement('div');
-  f.className='firefly';
-  f.style.left = Math.random()*100 + 'vw';
-  f.style.top = Math.random()*70 + 'vh';
-  f.style.animationDuration = (8+Math.random()*10)+'s, '+(0.8+Math.random()*1.5)+'s';
-  f.style.animationDelay = Math.random()*5+'s, '+Math.random()*2+'s';
-  document.body.appendChild(f);
+// Tara banano
+const starsContainer = document.getElementById('stars');
+for(let i=0;i<80;i++){
+  let s = document.createElement('div');
+  s.className='star';
+  let size = Math.random()*2 + 0.5;
+  s.style.width = size+'px';
+  s.style.height = size+'px';
+  s.style.left = Math.random()*100+'vw';
+  s.style.top = Math.random()*65+'vh';
+  s.style.animationDelay = Math.random()*3+'s';
+  s.style.animationDuration = (1.5+Math.random()*2)+'s';
+  starsContainer.appendChild(s);
 }
 </script>
 </body>
