@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Mawya ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100dvh; background:#020211; overflow:hidden;
+  display:flex; justify-content:center; align-items:center;
+  font-family:'Poppins', sans-serif;
+}
+.bg{position:fixed; inset:0; background: radial-gradient(ellipse at center, #2a0a1e 0%, #0f0510 40%, #020211 100%); z-index:0;}
+.stars{position:fixed; inset:0; z-index:1;}
+.star{position:absolute; width:2px; height:2px; background:white; border-radius:50%; animation: twinkle 3s infinite alternate; opacity:0.6;}
+@keyframes twinkle{0%{opacity:0.2} 100%{opacity:1}}
+
+.center{position:relative; z-index:5; text-align:center; padding:20px; width:100%; max-width:500px;}
+.main-text{
+  font-family:'Great Vibes', cursive;
+  font-size: clamp(45px, 12vw, 75px);
+  color:#fff;
+  line-height:1.1;
+  text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d, 0 0 60px #ff1a4d;
+  animation: glow 3s ease-in-out infinite, float 4s ease-in-out infinite;
+}
+@keyframes glow{0%,100%{text-shadow:0 0 15px #ff4d6d, 0 0 30px #ff4d6d} 50%{text-shadow:0 0 25px #ff8fab, 0 0 50px #ff4d6d, 0 0 80px #ff1a4d}}
+@keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)}}
+
+.sub{margin-top:15px; color:rgba(255,200,210,0.8); letter-spacing:4px; font-size:11px; animation: fade 2s infinite alternate;}
+@keyframes fade{from{opacity:0.5} to{opacity:1}}
+
+.ring{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); border:1px solid rgba(255,77,109,0.15); border-radius:50%; animation: ringPulse 4s linear infinite;}
+.ring1{width:280px; height:280px; animation-delay:0s}
+.ring2{width:400px; height:400px; animation-delay:1s}
+.ring3{width:550px; height:550px; animation-delay:2s}
+@keyframes ringPulse{0%{transform:translate(-50%,-50%) scale(0.8); opacity:0} 50%{opacity:0.5} 100%{transform:translate(-50%,-50%) scale(1.2); opacity:0}}
+
+.float-layer{position:fixed; inset:0; pointer-events:none; z-index:6; overflow:hidden;}
+.float-item{position:absolute; bottom:-50px; animation: flyUp linear infinite; will-change:transform;}
+@keyframes flyUp{0%{transform:translateY(0) translateX(0) rotate(0deg) scale(0.5); opacity:0} 10%{opacity:1} 90%{opacity:0.8} 100%{transform:translateY(-110vh) translateX(var(--x)) rotate(720deg) scale(1.2); opacity:0}}
+
+.orbit-text{position:absolute; top:50%; left:50%; width:320px; height:320px; margin:-160px 0 0 -160px; animation: rotate 20s linear infinite; pointer-events:none; z-index:4;}
+.orbit-text span{position:absolute; left:50%; font-family:'Poppins'; font-size:11px; color:rgba(255,150,170,0.7); letter-spacing:2px; transform-origin:0 160px;}
+@keyframes rotate{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+
+.btns{margin-top:35px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+.btns a{padding:11px 28px; border-radius:30px; text-decoration:none; font-size:12px; letter-spacing:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; backdrop-filter:blur(10px); transition:0.3s;}
+.btns a.love{background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold; box-shadow:0 0 20px rgba(255,77,109,0.5);}
+.btns a:hover{transform:scale(1.05);}
+
+@media(max-width:480px){
+ .ring1{width:220px; height:220px}
+ .ring2{width:320px; height:320px}
+ .ring3{width:420px; height:420px}
+ .orbit-text{width:260px; height:260px; margin:-130px 0 0 -130px}
+ .orbit-text span{transform-origin:0 130px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars" id="stars"></div>
+<div class="float-layer" id="floatLayer"></div>
+
+<div class="ring ring1"></div>
+<div class="ring ring2"></div>
+<div class="ring ring3"></div>
+
+<div class="orbit-text" id="orbit"></div>
+
+<div class="center">
+  <div class="main-text">I Love You<br>Mawya ❤️</div>
+  <div class="sub">YOU ARE MY EVERYTHING</div>
+  <div class="btns">
+    <a href="next.html">← BACK</a>
+    <a href="index.html" class="love">MY WORLD 🌍</a>
+  </div>
+</div>
+
+<script>
+// stars
+const starsEl = document.getElementById('stars');
+for(let i=0;i<80;i++){
+  const s=document.createElement('div'); s.className='star';
+  s.style.left=Math.random()*100+'vw'; s.style.top=Math.random()*100+'vh';
+  s.style.animationDelay=Math.random()*3+'s';
+  s.style.width=(Math.random()*2+1)+'px'; s.style.height=s.style.width;
+  starsEl.appendChild(s);
+}
+
+// orbit text
+const orbitText = " • MY LOVE MAWYA • I LOVE YOU SO MUCH • FOREVER YOURS • ";
+const orbit = document.getElementById('orbit');
+for(let i=0;i<orbitText.length;i++){
+  const span=document.createElement('span');
+  span.innerText=orbitText[i];
+  span.style.transform=`rotate(${i* (360/orbitText.length)}deg)`;
+  orbit.appendChild(span);
+}
+
+// floating loves
+const layer = document.getElementById('floatLayer');
+const items = ['❤️','💖','💕','💗','🌹','🌸','✨','💐','🦋'];
+function createFloat(){
+  const el=document.createElement('div');
+  el.className='float-item';
+  el.innerText=items[Math.floor(Math.random()*items.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+14)+'px';
+  el.style.setProperty('--x', (Math.random()*100-50)+'px');
+  el.style.animationDuration=(Math.random()*5+6)+'s';
+  el.style.animationDelay=Math.random()*1+'s';
+  layer.appendChild(el);
+  setTimeout(()=>el.remove(), 11000);
+}
+setInterval(createFloat, 250);
+for(let i=0;i<15;i++) setTimeout(createFloat, i*150);
+
+// auto music if coming from story
+const bgMusic = new Audio("https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3");
+bgMusic.loop=true; bgMusic.volume=0.5;
+bgMusic.play().catch(()=>{
+  document.body.addEventListener('click', ()=>{ bgMusic.play(); }, {once:true});
+});
+</script>
+</body>
+</html>
