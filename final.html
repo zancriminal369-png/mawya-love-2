@@ -12,36 +12,36 @@ body{margin:0; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); co
 .container{max-width:680px; margin:0 auto; position:relative; z-index:2;}
 .box{background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); padding:28px 22px; border-radius:24px; backdrop-filter:blur(20px); margin-top:15px; box-shadow:0 20px 50px rgba(0,0,0,0.4); position:relative; overflow:hidden;}
 h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align:center; margin-bottom:20px; position:relative; z-index:5;}
-.story{line-height:2.0; font-size:16px; font-weight:300; white-space:pre-line; text-align:justify; color:#e2e8f0; letter-spacing:0.3px; position:relative; z-index:5;}
+.story{line-height:2.0; font-size:16px; font-weight:300; white-space:pre-line; text-align:justify; color:#e2e8f0; position:relative; z-index:5;}
 .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin:25px 0; position:relative; z-index:5;}
 .buttons{display:flex; gap:12px; justify-content:center; margin-top:25px; position:relative; z-index:5;}
-.buttons a{padding:12px 30px; border-radius:30px; text-decoration:none; font-size:13px; letter-spacing:1px; transition:0.3s; font-family:'Poppins',sans-serif;}
+.buttons a{padding:12px 30px; border-radius:30px; text-decoration:none; font-size:13px; font-family:'Poppins',sans-serif;}
 a.back{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white;}
-a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:bold; box-shadow:0 5px 15px rgba(255,77,109,0.4);}
+a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:bold;}
 .float-container{position:fixed; inset:0; pointer-events:none; z-index:10; overflow:hidden;}
-.heart{position:absolute; bottom:-30px; animation: floatUp linear infinite; z-index:10; text-shadow:0 0 10px rgba(255,77,109,0.8);}
-@keyframes floatUp{
-  0%{transform:translateY(0) translateX(0) rotate(0deg) scale(0.6); opacity:0}
-  10%{opacity:1}
-  100%{transform:translateY(-115vh) translateX(40px) rotate(360deg) scale(1.4); opacity:0}
-}
-.floating-text{position:absolute; bottom:-30px; font-family:'Great Vibes'; color:#ff8fab; animation: floatUpText linear infinite; z-index:11; opacity:0.9; text-shadow:0 0 10px #ff4d6d;}
-@keyframes floatUpText{
-  0%{transform:translateY(0) translateX(0) scale(0.8); opacity:0}
-  15%{opacity:1}
-  100%{transform:translateY(-115vh) translateX(-20px) scale(1.2); opacity:0}
-}
-@media(max-width:480px){h1{font-size:44px} .story{font-size:15px; line-height:1.9} .box{padding:20px 16px}}
+.heart{position:absolute; bottom:-30px; animation: floatUp linear infinite; z-index:10;}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(0.6); opacity:0} 10%{opacity:1} 100%{transform:translateY(-115vh) rotate(360deg) scale(1.4); opacity:0}}
+.floating-text{position:absolute; bottom:-30px; font-family:'Great Vibes'; color:#ff8fab; animation: floatUp linear infinite; z-index:11; text-shadow:0 0 10px #ff4d6d;}
+/* TAP OVERLAY */
+#tapOverlay{position:fixed; inset:0; background:rgba(2,2,17,0.92); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; backdrop-filter:blur(10px); cursor:pointer;}
+#tapOverlay h2{font-family:'Great Vibes'; font-size:55px; color:#ff8fab; margin-bottom:15px; animation: pulse 1.5s infinite;}
+#tapOverlay p{font-family:'Poppins'; letter-spacing:3px; font-size:12px; color:rgba(255,255,255,0.7);}
+@keyframes pulse{0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)}}
 </style>
 </head>
 <body>
 
+<div id="tapOverlay" onclick="startLove()">
+<h2>My Love Mawya ❤️</h2>
+<p>TAP TO FEEL MY LOVE 💖</p>
+<p style="margin-top:15px; font-size:20px;">🎵🦋✨</p>
+</div>
+
 <div class="bg-blur"></div>
 <div class="float-container" id="floatContainer"></div>
 
-<!-- AUTO MUSIC - NO OFF BUTTON -->
-<audio id="bgMusic" autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a650f7.mp3?filename=romantic-piano-110789.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -58,44 +58,30 @@ a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weig
 
 <script>
 const container = document.getElementById('floatContainer');
-const emojis = ['❤️','💖','💕','🌸','🌹','🦋','💗','🌺','💐','✨'];
-const texts = ['My Love Mawya ❤️', 'I Love You 💖', 'My World 🌸', 'Mawya 💕'];
+const music = document.getElementById('bgMusic');
+const emojis = ['❤️','💖','💕','🌸','🌹','🦋','💗','🌺','💐','✨','My Love Mawya ❤️','I Love You 💕'];
+let intervalId;
 
 function createFloat(){
   const el = document.createElement('div');
-  const isText = Math.random() < 0.25; // 25% text, 75% emoji
-  if(isText){
-    el.className='floating-text';
-    el.innerText = texts[Math.floor(Math.random()*texts.length)];
-    el.style.fontSize = (Math.random()*10 + 18)+'px';
-    el.style.left = Math.random()*70 + 15 + 'vw';
-    el.style.animationDuration = (Math.random()*4 + 7)+'s';
-  } else {
-    el.className='heart';
-    el.innerText = emojis[Math.floor(Math.random()*emojis.length)];
-    el.style.left = Math.random()*100+'vw';
-    el.style.animationDuration = (Math.random()*5 + 6)+'s';
-    el.style.fontSize = (Math.random()*12 + 16)+'px';
-  }
+  const txt = emojis[Math.floor(Math.random()*emojis.length)];
+  if(txt.length > 4){ el.className='floating-text'; el.style.fontSize=(Math.random()*8+18)+'px'; }
+  else { el.className='heart'; el.style.fontSize=(Math.random()*12+16)+'px'; }
+  el.innerText = txt;
+  el.style.left = Math.random()*90+'vw';
+  el.style.animationDuration = (Math.random()*4+6)+'s';
   container.appendChild(el);
-  setTimeout(()=>el.remove(), 11000);
+  setTimeout(()=>el.remove(), 10000);
 }
 
-setInterval(createFloat, 350);
-for(let i=0;i<10;i++){ setTimeout(createFloat, i*300); }
-
-// Auto music - try to play
-const music = document.getElementById('bgMusic');
-music.volume = 0.6;
-function tryPlay(){
-  music.play().catch(()=>{
-    // If blocked, play on first touch
-    document.body.addEventListener('click', ()=>{ music.play(); }, {once:true});
-    document.body.addEventListener('touchstart', ()=>{ music.play(); }, {once:true});
-  });
+function startLove(){
+  document.getElementById('tapOverlay').style.display='none';
+  music.volume=0.7;
+  music.play().then(()=>{}).catch(e=>console.log(e));
+  // start animations
+  for(let i=0;i<12;i++) setTimeout(createFloat, i*200);
+  intervalId = setInterval(createFloat, 300);
 }
-window.addEventListener('load', tryPlay);
-setTimeout(tryPlay, 500);
 </script>
 </body>
 </html>
