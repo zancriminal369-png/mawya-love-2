@@ -7,92 +7,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+Bengali:wght@400;600&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{margin:0; background:#0f172a; color:white; font-family:'Noto Serif Bengali', serif; min-height:100vh; padding:15px; overflow-x:hidden;}
-.bg-3d{position:fixed; inset:0; z-index:0; background: radial-gradient(ellipse at top, #1e293b 0%, #0f172a 60%);}
-.container{max-width:680px; margin:0 auto; position:relative; z-index:2;}
-.box{background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); padding:28px 22px; border-radius:24px; backdrop-filter:blur(20px); margin-top:15px; min-height:520px; box-shadow:0 20px 50px rgba(0,0,0,0.4);}
-h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align:center; margin-bottom:20px;}
-.divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin:22px 0; opacity:0;}
-.divider.show{opacity:1;}
-.buttons{display:flex; gap:12px; justify-content:center; margin-top:25px; opacity:0;}
-.buttons.show{opacity:1;}
-.buttons a{padding:12px 30px; border-radius:30px; text-decoration:none; font-size:13px; font-family:'Poppins',sans-serif;}
-a.back{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white;}
-a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:bold;}
-#storyArea{line-height:2.8; font-size:18px; color:#e2e8f0; min-height:350px; display:flex; flex-wrap:wrap; word-break:break-word;}
-.letter{opacity:0; display:inline-block; transform:translateY(-50px); transition:all 0.35s ease; min-width:1px;}
-.letter.space{width:6px;}
-.letter.show{opacity:1; transform:translateY(0);}
-#tapOverlay{position:fixed; inset:0; background:rgba(2,2,17,0.92); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; backdrop-filter:blur(15px); cursor:pointer; text-align:center; padding:20px;}
-#tapOverlay h2{font-family:'Great Vibes'; font-size:58px; color:#ff8fab; animation: pulse 1.5s infinite;}
-@keyframes pulse{0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)}}
-.tap{font-family:'Poppins'; letter-spacing:2px; font-size:11px; color:#ff8fab; border:1px solid rgba(255,143,171,0.4); padding:10px 22px; border-radius:30px; margin-top:15px;}
-#floatContainer{position:fixed; inset:0; pointer-events:none; z-index:999; overflow:hidden;}
-.emoji-float{position:absolute; bottom:-30px; animation: up 6s linear forwards; font-size:24px; text-shadow:0 0 10px rgba(255,255,255,0.5);}
-@keyframes up{0%{transform:translateY(0) translateX(0) scale(0.5); opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-110vh) translateX(30px) scale(1.5); opacity:0}}
+body{margin:0;background:#0f172a;color:white;font-family:'Noto Serif Bengali',serif;min-height:100vh;padding:15px;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at top,#1e293b 0%,#0f172a 60%)}
+.container{max-width:680px;margin:0 auto;position:relative;z-index:2}
+.box{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);padding:28px 22px;border-radius:24px;backdrop-filter:blur(20px);margin-top:15px;min-height:520px;box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+h1{font-family:'Great Vibes',cursive;font-size:52px;color:#ff8fab;text-align:center;margin-bottom:20px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);margin:22px 0;opacity:0}
+.buttons{display:flex;gap:12px;justify-content:center;margin-top:25px;opacity:0}
+.buttons.show{opacity:1}
+.buttons a{padding:12px 30px;border-radius:30px;text-decoration:none;font-size:13px;font-family:'Poppins',sans-serif}
+a.back{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:white}
+a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:white;font-weight:bold}
+#storyArea{line-height:2.8;font-size:18px;color:#e2e8f0;min-height:350px;display:flex;flex-wrap:wrap;word-break:break-word}
+.letter{opacity:0;display:inline-block;transform:translateY(-50px);transition:all 0.35s ease;min-width:1px}
+.letter.show{opacity:1;transform:translateY(0)}
+#tap{position:fixed;inset:0;background:rgba(2,2,17,0.92);z-index:100;display:flex;flex-direction:column;justify-content:center;align-items:center;backdrop-filter:blur(15px);cursor:pointer;text-align:center;padding:20px}
+#tap h2{font-family:'Great Vibes';font-size:58px;color:#ff8fab;animation:pulse 1.5s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 </style>
 </head>
 <body>
-
-<div id="tapOverlay" onclick="startLove()">
-<h2>Our Love Story ❤</h2>
-<p style="font-family:'Poppins'; font-size:14px; color:#e2e8f0; max-width:300px; margin:10px 0; line-height:1.5;">How our beautiful journey started... From first message to forever love</p>
-<p class="tap">✨ TAP TO READ OUR STORY ✨</p>
-</div>
-
-<div class="bg-3d"></div>
-<div id="floatContainer"></div>
-<audio id="bgMusic" loop><source src="https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3" type="audio/mpeg"></audio>
-
-<div class="container">
-<div class="box">
-<h1>For You Mawya ❤</h1>
-<div id="storyArea"></div>
-<div class="divider" id="divider"></div>
-<div class="buttons" id="btns">
-<a href="index.html" class="back">← BACK</a>
-<a href="next.html" class="next">SEE PICS →</a>
-</div>
-</div>
-</div>
-
+<div id="tap" onclick="start()"><h2>Our Love Story ❤</h2><p style="font-family:'Poppins';font-size:14px;color:#e2e8f0;max-width:300px;margin:10px 0">How our beautiful journey started...</p><p style="font-family:'Poppins';letter-spacing:2px;font-size:11px;color:#ff8fab;border:1px solid rgba(255,143,171,0.4);padding:10px 22px;border-radius:30px;margin-top:15px">✨ TAP TO READ ✨</p></div>
+<div class="bg"></div>
+<div class="container"><div class="box"><h1>For You Mawya ❤</h1><div id="storyArea"></div><div class="divider" id="div"></div><div class="buttons" id="btns"><a href="index.html" class="back">← BACK</a><a href="love.html" class="next">SEE MAGIC →</a></div></div></div>
 <script>
-const fullStory = `Amader first kotha hoi facebook a , ami tokhon onk besi free fire khaltam , saradin sararat mane ami jonkhon phone hate nitam tokho sudu free fire khaltam . To akdin ami facebook a amnni dukci duke amnni scole korteci , to hotat tomar mahi id ta amr samne ase , ami amr fd mahi vebe frd requst dei , to trpr pordin naki sedin a tumi accept koro , to first masses ami tomk dei , trpr tomar sate ami kotha bola suru kori , tomar sate kotha bole tokhon valoii lagcilo , pagolder moto ans dicila , trpr avabe amr sate amr protidin kotha hoi , ter maje tumi tomar real id amk deo oita teo frd koro amk . Er por hotat amader 3-4 din kotha hoi na , pore ami jokhon tomak masses dite jai dakhi tumi amk mahi id thake block kore dico , to amr tokhon mone cilo na je tomar ar akta id amr kace ace, trpr ami ar kisu kori nai , pore oidin rate ami game khalar jono dukci but sei somoy amr mb ses hoia gace . Trpr ami gumanor jonno suia cilam but gum astecilo na , pore ami phone hate niye massenger duki , trpr ami amnni id daktecilam amr frd der , to hotat tomar real id ta dakhi , ar tohon tumi online a , ami sate sate tomk masses dei . Tumi amk replyeo ditecila tobe late kore , pore tomar sate onk kotha hoi , trpr ami tomar pic caicilam . Tumi bolcila pic diye ki korben ami bolcilam kisu na just dakbo , dakhe delete kore dibo . Tokhon tumi ditecila na . Trpr ak porjaye ami tomake propose kore dei . Tumi obak hoicila . Trpr tumio ragi hao onk kosto korar por . Trpr tumi bolcila kal pic diba , pore amk gumai jaite bolcila . Ami oi din rate kivabe je gumaici ami ajo jani na . Ami ki gumaicilam naki gumai nai allah valo jane , ami ato beshi excited cilam . Trpr tumi bolcila sokal 7 tai amk pic diba mae gum thake ute . ar akta kotha bolte vule gaci , jokhon ami tomk propose kori trpr ami bolcilam ami apnke valobashi , apnake bia korbo agula boltecilam , tumi tokhon video daktecila , to amk bolteco apni jan to amk valo kore video dakte den , ami to obk hoia gacilam tomar kotha sunhe . Pore ami bolcilam je ami aikhane amar life nia kotha bolteci ar apni video nia asen . To trpr sokal a ami tomar jonno wait kortecilam je tumi kohono asba ,trpr tumi 8:30 dik online a aso , to tokhon amr test exam coltecilo , ami school jawar jonno ready hoia tomar jonno phone hate nia boae cilam ,trpr tumi online aso , ami tokhon ato happy hoicilam jano na . Trpr tomar sate kotha hoi trpr ami boli pic dawar kotha cilo akon den . Tumi bolcila pic dia jodi kisu koren , jano na tumi agula bolcila amr rag o hoccilo aber hasio paccilo , trpr tumi amk tomar pic deo ami valo kore dakhi na tate tumi delete kore dao . Tumi amk bolcila je save kore rakben na , kintu ami save kore rakcilam . tumi amk 3 ta pic deo , pic gula next page a ace . trpr ami school a jai exam dewar jonno , tumi bissas korba na amr ato kharab lagtecilo bar bar basay ase tomar sate kotha bolte mon chaccilo . Pore exam ses kore 1 secend o kothao na thake taratari basay cole acci ase tomar sate kotha bolci. avabe amader rlt suru hoi . tobe ata sotti ami toamke first propose korcilam . Tobe moja kore agula kori nai .`;
-
-const area=document.getElementById('storyArea');
-const floatContainer=document.getElementById('floatContainer');
-let started=false;
-
-function startLove(){
- if(started) return; started=true;
- document.getElementById('tapOverlay').style.display='none';
- document.getElementById('bgMusic').volume=0.6; document.getElementById('bgMusic').play().catch(()=>{});
- rainLetters();
- setInterval(createEmoji, 250);
- for(let i=0;i<15;i++) setTimeout(createEmoji, i*200);
-}
-
-function rainLetters(){
- const chars = fullStory.split('');
- chars.forEach((ch,i)=>{
-   const span=document.createElement('span');
-   span.className='letter' + (ch===' ' ? ' space' : '');
-   span.innerText=ch;
-   area.appendChild(span);
-   setTimeout(()=>{ span.classList.add('show'); if(i===chars.length-1){ setTimeout(()=>{ document.getElementById('divider').style.opacity='1'; document.getElementById('btns').style.opacity='1'; },500); } }, i*25);
+const fullStory=`Amader first kotha hoi facebook a , ami tokhon onk besi free fire khaltam , saradin sararat mane ami jonkhon phone hate nitam tokho sudu free fire khaltam . To akdin ami facebook a amnni dukci duke amnni scole korteci , to hotat tomar mahi id ta amr samne ase , ami amr fd mahi vebe frd requst dei , to trpr pordin naki sedin a tumi accept koro , to first masses ami tomk dei , trpr tomar sate ami kotha bola suru kori , tomar sate kotha bole tokhon valoii lagcilo , pagolder moto ans dicila , trpr avabe amr sate amr protidin kotha hoi , ter maje tumi tomar real id amk deo oita teo frd koro amk . Er por hotat amader 3-4 din kotha hoi na , pore ami jokhon tomak masses dite jai dakhi tumi amk mahi id thake block kore dico , to amr tokhon mone cilo na je tomar ar akta id amr kace ace, trpr ami ar kisu kori nai , pore oidin rate ami game khalar jono dukci but sei somoy amr mb ses hoia gace . Trpr ami gumanor jonno suia cilam but gum astecilo na , pore ami phone hate niye massenger duki , trpr ami amnni id daktecilam amr frd der , to hotat tomar real id ta dakhi , ar tohon tumi online a , ami sate sate tomk masses dei . Tumi amk replyeo ditecila tobe late kore , pore tomar sate onk kotha hoi , trpr ami tomar pic caicilam . Tumi bolcila pic diye ki korben ami bolcilam kisu na just dakbo , dakhe delete kore dibo . Tokhon tumi ditecila na . Trpr ak porjaye ami tomake propose kore dei . Tumi obak hoicila . Trpr tumio ragi hao onk kosto korar por . Trpr tumi bolcila kal pic diba , pore amk gumai jaite bolcila . Ami oi din rate kivabe je gumaici ami ajo jani na . Ami ki gumaicilam naki gumai nai allah valo jane , ami ato beshi excited cilam . Trpr tumi bolcila sokal 7 tai amk pic diba mae gum thake ute . ar akta kotha bolte vule gaci , jokhon ami tomk propose kori trpr ami bolcilam ami apnke valobashi , apnake bia korbo agula boltecilam , tumi tokhon video daktecila , to amk bolteco apni jan to amk valo kore video dakte den , ami to obk hoia gacilam tomar kotha sunhe . Pore ami bolcilam je ami aikhane amar life nia kotha bolteci ar apni video nia asen . To trpr sokal a ami tomar jonno wait kortecilam je tumi kohono asba ,trpr tumi 8:30 dik online a aso , to tokhon amr test exam coltecilo , ami school jawar jonno ready hoia tomar jonno phone hate nia boae cilam ,trpr tumi online aso , ami tokhon ato happy hoicilam jano na . Trpr tomar sate kotha hoi trpr ami boli pic dawar kotha cilo akon den . Tumi bolcila pic dia jodi kisu koren , jano na tumi agula bolcila amr rag o hoccilo aber hasio paccilo , trpr tumi amk tomar pic deo ami valo kore dakhi na tate tumi delete kore dao . Tumi amk bolcila je save kore rakben na , kintu ami save kore rakcilam . tumi amk 3 ta pic deo , pic gula next page a ace . trpr ami school a jai exam dewar jonno , tumi bissas korba na amr ato kharab lagtecilo bar bar basay ase tomar sate kotha bolte mon chaccilo . Pore exam ses kore 1 secend o kothao na thake taratari basay cole acci ase tomar sate kotha bolci. avabe amader rlt suru hoi . tobe ata sotti ami toamke first propose korcilam . Tobe moja kore agula kori nai .`;
+let st=false;
+function start(){
+ if(st) return; st=true;
+ document.getElementById('tap').style.display='none';
+ let area=document.getElementById('storyArea');
+ fullStory.split('').forEach((ch,i)=>{
+   let s=document.createElement('span'); s.className='letter'; s.innerText=ch; area.appendChild(s);
+   setTimeout(()=>{s.classList.add('show'); if(i===fullStory.length-1){document.getElementById('div').style.opacity='1'; document.getElementById('btns').classList.add('show');}}, i*22);
  });
-}
-
-function createEmoji(){
-  const el=document.createElement('div');
-  el.className='emoji-float';
-  const emojis=["❤","💝","💕","💖","🌹","🤍","💙","💚","💛","🤎","💗","💓","💞","💟","💘","🎈","🎉","🥰"];
-  el.innerText=emojis[Math.floor(Math.random()*emojis.length)];
-  el.style.left=Math.random()*95+'vw';
-  el.style.animationDuration=(4+Math.random()*4)+'s';
-  el.style.fontSize=(18+Math.random()*22)+'px';
-  floatContainer.appendChild(el);
-  setTimeout(()=>el.remove(), 8000);
 }
 </script>
 </body>

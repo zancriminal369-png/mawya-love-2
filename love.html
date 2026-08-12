@@ -7,14 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100dvh; background:#020211; overflow:hidden; display:flex; justify-content:center; align-items:center; font-family:'Poppins', sans-serif;}
-.bg{position:fixed; inset:0; background: radial-gradient(ellipse at center, #1a0a14 0%, #05030a 60%, #020211 100%); z-index:0;}
-#canvas{position:fixed; inset:0; z-index:2;}
-.center-text{position:fixed; z-index:5; text-align:center; pointer-events:none; top:50%; left:50%; transform:translate(-50%,-50%);}
-.center-text h1{font-family:'Great Vibes'; font-size: clamp(38px, 10vw, 62px); color:white; text-shadow:0 0 20px #ff4d6d, 0 0 50px #ff1a4d; animation: beat 1.2s ease-in-out infinite;}
-@keyframes beat{0%,100%{transform:scale(1)} 50%{transform:scale(1.08)}}
-.btns{position:fixed; bottom:25px; left:50%; transform:translateX(-50%); z-index:10; display:flex; gap:12px;}
-.btns a{padding:12px 26px; border-radius:30px; text-decoration:none; font-size:12px; letter-spacing:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; backdrop-filter:blur(10px);}
+body{min-height:100dvh;background:#020211;overflow:hidden;display:flex;justify-content:center;align-items:center;font-family:'Poppins',sans-serif}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at center,#1a0a14 0%,#05030a 60%,#020211 100%);z-index:0}
+#canvas{position:fixed;inset:0;z-index:2}
+.center-text{position:fixed;z-index:5;text-align:center;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%)}
+.center-text h1{font-family:'Great Vibes';font-size:clamp(38px,10vw,62px);color:white;text-shadow:0 0 20px #ff4d6d,0 0 50px #ff1a4d;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.btns{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:12px}
+.btns a{padding:12px 26px;border-radius:30px;text-decoration:none;font-size:12px;letter-spacing:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;backdrop-filter:blur(10px)}
 </style>
 </head>
 <body>
@@ -22,69 +22,36 @@ body{min-height:100dvh; background:#020211; overflow:hidden; display:flex; justi
 <canvas id="canvas"></canvas>
 <div class="center-text"><h1>I Love You<br>Mawya ❤</h1></div>
 <div class="btns">
-  <a href="next.html">← BACK</a>
-  <a href="quiz.html" style="background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;">NEXT →</a>
+  <a href="final.html">← BACK</a>
+  <a href="quiz.html" style="background:linear-gradient(90deg,#ff4d6d,#ff8fab);border:none;font-weight:bold">NEXT →</a>
 </div>
 <script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-let W,H, hearts=[];
-function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
-window.addEventListener('resize', resize); resize();
-const text = "I LOVE YOU MAWYA ❤ ";
-let angle = 0;
+const canvas=document.getElementById('canvas'),ctx=canvas.getContext('2d');
+let W,H,hearts=[],angle=0;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+const text="I LOVE YOU MAWYA ❤ ";
 class Particle{
-  constructor(i, total){
-    this.i=i; this.total=total;
-    this.baseAngle = (i/total)*Math.PI*2;
-    this.radius = 0;
-    this.size = Math.random()*1.2+1;
-  }
+  constructor(i,total){this.i=i;this.total=total;this.baseAngle=(i/total)*Math.PI*2}
   update(){
-    const t = this.baseAngle + angle;
-    const scale = Math.min(W,H) * 0.38;
-    const hx = 16*Math.pow(Math.sin(t),3);
-    const hy = -(13*Math.cos(t) -5*Math.cos(2*t) -2*Math.cos(3*t) - Math.cos(4*t));
-    this.x = W/2 + hx*scale/16 + Math.sin(angle*2+this.i)*5;
-    this.y = H/2 + hy*scale/16 + Math.cos(angle*2+this.i)*5;
-    this.char = text[this.i % text.length];
+    const t=this.baseAngle+angle;
+    const scale=Math.min(W,H)*0.38;
+    const hx=16*Math.pow(Math.sin(t),3);
+    const hy=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    this.x=W/2+hx*scale/16;
+    this.y=H/2+hy*scale/16;
+    this.char=text[this.i%text.length];
   }
   draw(){
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.baseAngle + angle);
-    ctx.font = `${this.size*14}px Poppins`;
-    ctx.fillStyle = `hsl(${340 + Math.sin(angle+this.i)*20}, 100%, ${70+Math.sin(angle)*10}%)`;
-    ctx.shadowBlur=12; ctx.shadowColor='#ff4d6d';
-    ctx.fillText(this.char, 0, 0);
-    ctx.restore();
+    ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.baseAngle+angle);
+    ctx.font=`14px Poppins`;ctx.fillStyle=`hsl(340,100%,70%)`;ctx.shadowBlur=12;ctx.shadowColor='#ff4d6d';
+    ctx.fillText(this.char,0,0);ctx.restore();
   }
 }
-const total = 180;
-for(let i=0;i<total;i++) hearts.push(new Particle(i,total));
-function animate(){
-  ctx.clearRect(0,0,W,H);
-  angle += 0.008;
-  hearts.forEach(p=>{ p.update(); p.draw(); });
-  requestAnimationFrame(animate);
-}
+const total=180;
+for(let i=0;i<total;i++)hearts.push(new Particle(i,total));
+function animate(){ctx.clearRect(0,0,W,H);angle+=0.008;hearts.forEach(p=>{p.update();p.draw()});requestAnimationFrame(animate)}
 animate();
-setInterval(()=>{
-  const el=document.createElement('div');
-  el.style.position='fixed'; el.style.left=Math.random()*100+'vw'; el.style.bottom='-20px';
-  el.style.fontSize=(Math.random()*10+12)+'px'; el.style.color='#ff6b8a';
-  el.innerText=['❤','💖','🌸'][Math.floor(Math.random()*3)];
-  el.style.zIndex=1; el.style.pointerEvents='none';
-  el.style.animation=`up ${6+Math.random()*4}s linear forwards`;
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(), 10000);
-}, 300);
-const style=document.createElement('style');
-style.innerHTML=`@keyframes up{0%{transform:translateY(0) translateX(0) scale(0.5); opacity:0} 10%{opacity:1} 100%{transform:translateY(-110vh) translateX(30px) scale(1.2); opacity:0}}`;
-document.head.appendChild(style);
-const bgMusic = new Audio("https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3");
-bgMusic.loop=true; bgMusic.volume=0.5;
-bgMusic.play().catch(()=>{ document.body.addEventListener('click',()=>bgMusic.play(),{once:true}) });
 </script>
 </body>
 </html>
