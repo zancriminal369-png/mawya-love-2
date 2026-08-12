@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Love You Mawya ❤️</title>
+<title>I Love You Mawya ❤</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,12 +22,12 @@ body{min-height:100dvh; background:#020211; overflow:hidden; display:flex; justi
 <canvas id="canvas"></canvas>
 
 <div class="center-text">
-  <h1>I Love You<br>Mawya ❤️</h1>
+  <h1>I Love You<br>Mawya ❤</h1>
 </div>
 
 <div class="btns">
   <a href="next.html">← BACK</a>
-  <a href="index.html" style="background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;">HOME</a>
+  <a href="quiz.html" style="background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;">NEXT →</a>
 </div>
 
 <script>
@@ -37,7 +37,7 @@ let W,H, hearts=[];
 function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
 window.addEventListener('resize', resize); resize();
 
-const text = "I LOVE YOU MAWYA ❤️ ";
+const text = "I LOVE YOU MAWYA ❤ ";
 let angle = 0;
 
 class Particle{
@@ -48,10 +48,8 @@ class Particle{
     this.size = Math.random()*1.2+1;
   }
   update(){
-    // heart formula
     const t = this.baseAngle + angle;
     const scale = Math.min(W,H) * 0.38;
-    // classic heart: x=16sin^3 t, y=13cos t -5cos2t -2cos3t -cos4t
     const hx = 16*Math.pow(Math.sin(t),3);
     const hy = -(13*Math.cos(t) -5*Math.cos(2*t) -2*Math.cos(3*t) - Math.cos(4*t));
     this.x = W/2 + hx*scale/16 + Math.sin(angle*2+this.i)*5;
@@ -81,12 +79,11 @@ function animate(){
 }
 animate();
 
-// floating small hearts background
 setInterval(()=>{
   const el=document.createElement('div');
   el.style.position='fixed'; el.style.left=Math.random()*100+'vw'; el.style.bottom='-20px';
   el.style.fontSize=(Math.random()*10+12)+'px'; el.style.color='#ff6b8a';
-  el.innerText=['❤️','💖','🌸'][Math.floor(Math.random()*3)];
+  el.innerText=['❤','💖','🌸'][Math.floor(Math.random()*3)];
   el.style.zIndex=1; el.style.pointerEvents='none';
   el.style.animation=`up ${6+Math.random()*4}s linear forwards`;
   document.body.appendChild(el);
@@ -97,7 +94,6 @@ const style=document.createElement('style');
 style.innerHTML=`@keyframes up{0%{transform:translateY(0) translateX(0) scale(0.5); opacity:0} 10%{opacity:1} 100%{transform:translateY(-110vh) translateX(30px) scale(1.2); opacity:0}}`;
 document.head.appendChild(style);
 
-// music
 const bgMusic = new Audio("https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3");
 bgMusic.loop=true; bgMusic.volume=0.5;
 bgMusic.play().catch(()=>{ document.body.addEventListener('click',()=>bgMusic.play(),{once:true}) });
