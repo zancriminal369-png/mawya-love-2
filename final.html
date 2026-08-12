@@ -11,10 +11,9 @@ body{margin:0; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); co
 .bg-blur{position:fixed; top:-100px; left:-100px; width:400px; height:400px; background:#ff4d6d; filter:blur(120px); opacity:0.15; border-radius:50%;}
 .container{max-width:680px; margin:0 auto; position:relative; z-index:2;}
 .box{background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); padding:28px 22px; border-radius:24px; backdrop-filter:blur(20px); margin-top:15px; min-height:520px; box-shadow:0 20px 50px rgba(0,0,0,0.4);}
-h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align:center; margin-bottom:20px; animation: fadeDown 1s ease forwards;}
-@keyframes fadeDown{from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)}}
+h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align:center; margin-bottom:20px;}
 .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin:22px 0; opacity:0;}
-.divider.show{opacity:1; animation: fadeDown 0.8s forwards;}
+.divider.show{opacity:1;}
 .buttons{display:flex; gap:12px; justify-content:center; margin-top:25px; opacity:0;}
 .buttons.show{opacity:1; animation: fadeUp 0.8s forwards;}
 @keyframes fadeUp{from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)}}
@@ -22,33 +21,25 @@ h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align
 a.back{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white;}
 a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:bold;}
 
-#storyArea{line-height:2.4; font-size:17px; text-align:justify; color:#e2e8f0; min-height:350px; display:flex; flex-wrap:wrap; gap:6px 8px; align-content:flex-start;}
-.word-wrap{display:inline-flex; align-items:center; opacity:0; transform:translateY(20px) scale(0.5); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position:relative;}
-.word-wrap.show{opacity:1; transform:translateY(0) scale(1);}
-.word-wrap .bird-icon{font-size:11px; margin-right:3px; animation: flap 0.3s infinite alternate;}
-@keyframes flap{0%{transform:rotate(-10deg)} 100%{transform:rotate(10deg)}}
-.word-text{font-weight:400; text-shadow:0 0 8px rgba(255,139,171,0.3);}
-.word-wrap.show .word-text{animation: glow 0.6s ease;}
+#storyArea{line-height:2.6; font-size:18px; text-align:left; color:#e2e8f0; min-height:350px; display:flex; flex-wrap:wrap; gap:7px 9px; align-content:flex-start;}
+.word{opacity:0; transform:translateY(25px) scale(0.8); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display:inline-block;}
+.word.show{opacity:1; transform:translateY(0) scale(1); text-shadow:0 0 10px rgba(255,139,171,0.4);}
 
-.fly-bird{position:fixed; font-size:16px; z-index:20; pointer-events:none; will-change:transform;}
+.fly-bird{position:fixed; font-size:20px; z-index:30; pointer-events:none; will-change:transform; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));}
 #tapOverlay{position:fixed; inset:0; background:rgba(2,2,17,0.92); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; backdrop-filter:blur(10px); cursor:pointer;}
 #tapOverlay h2{font-family:'Great Vibes'; font-size:55px; color:#ff8fab; margin-bottom:15px; animation: pulse 1.5s infinite;}
 @keyframes pulse{0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)}}
-.float-container{position:fixed; inset:0; pointer-events:none; z-index:10;}
-.heart{position:absolute; bottom:-30px; animation: floatUp linear infinite;}
-@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(0.6); opacity:0} 10%{opacity:1} 100%{transform:translateY(-115vh) rotate(360deg) scale(1.4); opacity:0}}
 </style>
 </head>
 <body>
 
 <div id="tapOverlay" onclick="startLove()">
 <h2>My Love Mawya ❤️</h2>
-<p style="font-family:'Poppins'; letter-spacing:3px; font-size:12px; color:rgba(255,255,255,0.7);">TAP TO FEEL MY LOVE 💖</p>
-<p style="margin-top:15px; font-size:22px;">🕊️✨❤️</p>
+<p style="font-family:'Poppins'; letter-spacing:3px; font-size:12px; color:rgba(255,255,255,0.7);">TAP TO START ✨</p>
+<p style="margin-top:15px; font-size:22px;">🕊️❤️🕊️</p>
 </div>
 
 <div class="bg-blur"></div>
-<div class="float-container" id="floatContainer"></div>
 <audio id="bgMusic" loop preload="auto"><source src="https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3" type="audio/mpeg"></audio>
 
 <div class="container">
@@ -74,54 +65,49 @@ function startLove(){
  if(started) return; started=true;
  document.getElementById('tapOverlay').style.display='none';
  document.getElementById('bgMusic').volume=0.6; document.getElementById('bgMusic').play().catch(()=>{});
- document.getElementById('floatContainer');
- setInterval(createFloat, 500);
  animateWords();
 }
 
 function animateWords(){
  words.forEach((w,i)=>{
-   const wrap=document.createElement('span');
-   wrap.className='word-wrap';
-   wrap.innerHTML=`<span class="bird-icon">🕊️</span><span class="word-text">${w}</span>`;
-   area.appendChild(wrap);
-
-   const rectPlaceholder = wrap.getBoundingClientRect(); // will be 0 before show
+   const span=document.createElement('span');
+   span.className='word';
+   span.innerText=w;
+   area.appendChild(span);
 
    setTimeout(()=>{
-     // create flying bird that goes to this word
      const fly=document.createElement('div');
-     fly.className='fly-bird'; fly.innerText='🕊️';
-     fly.style.left='-30px';
-     fly.style.top=(100 + Math.random()*60)+'vh';
+     fly.className='fly-bird';
+     fly.innerText='🕊️';
+     fly.style.left='-40px';
+     fly.style.top=Math.random()*40+20+'vh';
      document.body.appendChild(fly);
      
-     const targetRect = wrap.getBoundingClientRect();
-     const tx = targetRect.left + 10;
-     const ty = targetRect.top + 10;
-     
-     fly.animate([
-       {transform:`translate(0px, 0px) rotate(20deg)`, opacity:0},
-       {transform:`translate(${window.innerWidth*0.3}px, ${ty - window.innerHeight*0.5}px) rotate(-5deg)`, opacity:1, offset:0.6},
-       {transform:`translate(${tx}px, ${ty}px) rotate(0deg) scale(0.5)`, opacity:0}
-     ], {duration:700, easing:'cubic-bezier(0.4,0,0.2,1)'}).onfinish=()=>{
+     const targetRect = span.getBoundingClientRect();
+     const tx = targetRect.left + window.scrollX;
+     const ty = targetRect.top + window.scrollY;
+
+     const anim = fly.animate([
+       {transform:`translate(0px, ${ty - window.innerHeight*0.3}px) scale(0.8)`, opacity:0},
+       {transform:`translate(${window.innerWidth*0.35}px, ${ty - 50}px) scale(1.1)`, opacity:1, offset:0.5},
+       {transform:`translate(${tx}px, ${ty}px) scale(0.6)`, opacity:1, offset:0.85},
+       {transform:`translate(${tx+80}px, ${ty-80}px) scale(0.9)`, opacity:0}
+     ], {duration:800, easing:'ease-in-out'});
+
+     anim.onfinish=()=>{
        fly.remove();
-       wrap.classList.add('show');
+       span.classList.add('show');
+       span.animate([{transform:'scale(1.4)', color:'#ff8fab'},{transform:'scale(1)', color:'#e2e8f0'}],{duration:400, easing:'ease-out'});
        if(i===words.length-1){
-         setTimeout(()=>{ document.getElementById('divider').classList.add('show'); document.getElementById('btns').classList.add('show'); },400);
+         setTimeout(()=>{ 
+           document.getElementById('divider').classList.add('show'); 
+           document.getElementById('btns').classList.add('show'); 
+           document.getElementById('btns').style.opacity='1';
+         },500);
        }
      };
-   }, i*120); // ekta word por asbe - speed
+   }, i*90);
  });
-}
-
-function createFloat(){
- const el=document.createElement('div'); el.className='heart';
- el.innerText=['❤️','💖','💕','🌸','🦋'][Math.floor(Math.random()*5)];
- el.style.left=Math.random()*90+'vw'; el.style.fontSize=(Math.random()*10+14)+'px';
- el.style.animationDuration=(Math.random()*3+5)+'s';
- document.getElementById('floatContainer').appendChild(el);
- setTimeout(()=>el.remove(),8000);
 }
 </script>
 </body>
