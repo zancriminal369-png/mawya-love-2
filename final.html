@@ -8,7 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{margin:0; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); color:white; font-family:'Noto Serif Bengali', serif; min-height:100vh; padding:15px; overflow-x:hidden;}
-.bg-blur{position:fixed; top:-100px; left:-100px; width:400px; height:400px; background:#ff4d6d; filter:blur(120px); opacity:0.15; border-radius:50%; z-index:0;}
+.bg-blur{position:fixed; top:-100px; left:-100px; width:400px; height:400px; background:#ff4d6d; filter:blur(120px); opacity:0.15; border-radius:50%;}
 .container{max-width:680px; margin:0 auto; position:relative; z-index:2;}
 .box{background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); padding:28px 22px; border-radius:24px; backdrop-filter:blur(20px); margin-top:15px; min-height:520px; box-shadow:0 20px 50px rgba(0,0,0,0.4);}
 h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align:center; margin-bottom:20px;}
@@ -21,13 +21,11 @@ h1{font-family:'Great Vibes', cursive; font-size:52px; color:#ff8fab; text-align
 a.back{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white;}
 a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:bold;}
 #storyArea{line-height:2.6; font-size:18px; text-align:left; color:#e2e8f0; min-height:350px; display:flex; flex-wrap:wrap; gap:7px 9px; align-content:flex-start; position:relative; z-index:5;}
-.word{opacity:0; transform:translateY(25px) scale(0.8); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display:inline-block; font-family:'Noto Serif Bengali', serif;}
-.word.show{opacity:1; transform:translateY(0) scale(1); text-shadow:0 0 10px rgba(255,139,171,0.4);}
-.fly-bird{position:fixed; font-size:20px; z-index:30; pointer-events:none; will-change:transform; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));}
+.word{opacity:0; display:inline-block; transform:translateY(-80px); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
+.word.show{opacity:1; transform:translateY(0);}
 #tapOverlay{position:fixed; inset:0; background:rgba(2,2,17,0.92); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; backdrop-filter:blur(10px); cursor:pointer;}
 #tapOverlay h2{font-family:'Great Vibes'; font-size:55px; color:#ff8fab; margin-bottom:15px; animation: pulse 1.5s infinite;}
 @keyframes pulse{0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)}}
-/* LOVE FLOATING */
 .float-container{position:fixed; inset:0; pointer-events:none; z-index:10; overflow:hidden;}
 .heart{position:absolute; bottom:-40px; animation: floatUp linear forwards;}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(0.6); opacity:0} 10%{opacity:1} 100%{transform:translateY(-120vh) rotate(360deg) scale(1.4); opacity:0}}
@@ -37,8 +35,8 @@ a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weig
 
 <div id="tapOverlay" onclick="startLove()">
 <h2>My Love Mawya ❤️</h2>
-<p style="font-family:'Poppins'; letter-spacing:3px; font-size:12px; color:rgba(255,255,255,0.7);">TAP TO START ✨</p>
-<p style="margin-top:15px; font-size:22px;">🕊️❤️🌹</p>
+<p style="font-family:'Poppins'; letter-spacing:3px; font-size:12px; color:rgba(255,255,255,0.7);">TAP TO START RAIN ✨</p>
+<p style="margin-top:15px; font-size:22px;">🌧️❤️🌧️</p>
 </div>
 
 <div class="bg-blur"></div>
@@ -63,56 +61,31 @@ const area=document.getElementById('storyArea');
 const floatContainer=document.getElementById('floatContainer');
 const words=fullStory.split(/\s+/).filter(w=>w.trim()!=='');
 let started=false;
-
 function startLove(){
  if(started) return; started=true;
  document.getElementById('tapOverlay').style.display='none';
  document.getElementById('bgMusic').volume=0.6; document.getElementById('bgMusic').play().catch(()=>{});
- animateWords();
+ rainWords();
  setInterval(createFloat, 350);
 }
-
-function animateWords(){
+function rainWords(){
  words.forEach((w,i)=>{
    const span=document.createElement('span');
    span.className='word';
    span.innerText=w;
    area.appendChild(span);
-   setTimeout(()=>{
-     const fly=document.createElement('div');
-     fly.className='fly-bird'; fly.innerText='🕊️';
-     fly.style.left='-40px'; fly.style.top=Math.random()*40+20+'vh';
-     document.body.appendChild(fly);
-     const targetRect = span.getBoundingClientRect();
-     const tx = targetRect.left + window.scrollX;
-     const ty = targetRect.top + window.scrollY;
-     const anim = fly.animate([
-       {transform:`translate(0px, ${ty - window.innerHeight*0.3}px) scale(0.8)`, opacity:0},
-       {transform:`translate(${window.innerWidth*0.35}px, ${ty - 50}px) scale(1.1)`, opacity:1, offset:0.5},
-       {transform:`translate(${tx}px, ${ty}px) scale(0.6)`, opacity:1, offset:0.85},
-       {transform:`translate(${tx+80}px, ${ty-80}px) scale(0.9)`, opacity:0}
-     ], {duration:800, easing:'ease-in-out'});
-     anim.onfinish=()=>{
-       fly.remove();
-       span.classList.add('show');
-       span.animate([{transform:'scale(1.4)', color:'#ff8fab'},{transform:'scale(1)', color:'#e2e8f0'}],{duration:400, easing:'ease-out'});
-       if(i===words.length-1){
-         setTimeout(()=>{ document.getElementById('divider').classList.add('show'); document.getElementById('btns').classList.add('show'); document.getElementById('btns').style.opacity='1'; },500);
-       }
-     };
-   }, i*90);
+   setTimeout(()=>{ span.classList.add('show'); if(i===words.length-1){ setTimeout(()=>{ document.getElementById('divider').classList.add('show'); document.getElementById('btns').classList.add('show'); document.getElementById('btns').style.opacity='1'; },500);} }, i*45);
  });
 }
-
 function createFloat(){
   const el=document.createElement('div'); el.className='heart';
-  const emojis=['❤️','💖','💕','🌸','🌹','🦋','💗','💞'];
+  const emojis=['❤️','💖','💕','🌸','🌹','🦋','💗'];
   el.innerText=emojis[Math.floor(Math.random()*emojis.length)];
   el.style.left=Math.random()*92+'vw';
   el.style.fontSize=(Math.random()*10+14)+'px';
-  el.style.animationDuration=(Math.random()*3+5)+'s';
+  el.style.animationDuration=(Math.random()*2+4)+'s';
   floatContainer.appendChild(el);
-  setTimeout(()=>el.remove(),8000);
+  setTimeout(()=>el.remove(),6000);
 }
 </script>
 </body>
