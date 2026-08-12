@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My World Mawya ❤️</title>
+<title>My World Mawya ❤</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -21,8 +21,6 @@ body{
 }
 .star{position:absolute; background:white; border-radius:50%; animation: twinkle 2.5s ease-in-out infinite alternate;}
 @keyframes twinkle{0%{opacity:0.2; transform:scale(0.8)} 100%{opacity:1; transform:scale(1.2)}}
-
-/* Notun Mati - sundor gradient + glow */
 .ground{
   position:absolute; bottom:0; width:100%; height:38%;
   background: linear-gradient(to top, #050a14 0%, #0a1a2e 60%, #102a4a 100%);
@@ -33,12 +31,6 @@ body{
   background: linear-gradient(90deg, transparent, rgba(100,180,255,0.3), transparent);
   box-shadow: 0 0 20px rgba(100,150,255,0.5);
 }
-.ground::after{
-  content:''; position:absolute; top:20%; left:10%; right:10%; height:1px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
-}
-
-/* Boro Gach - aro realistic */
 .tree{position:absolute; bottom:38%; z-index:3; display:flex; flex-direction:column; align-items:center;}
 .tree-leaves{
   background: radial-gradient(ellipse at 30% 20%, #2e8b57, #1a4d1a, #0f2f0f);
@@ -47,13 +39,10 @@ body{
   position:relative;
 }
 .tree-trunk{ background: linear-gradient(to right, #1a0f08, #3d2817, #1a0f08); border-radius:2px; }
-
 .tree.t1{ left:3%; } .t1 .tree-leaves{ width:120px; height:140px; } .t1 .tree-trunk{ width:20px; height:130px; }
 .tree.t2{ left:22%; bottom:39%; opacity:0.9; } .t2 .tree-leaves{ width:95px; height:110px; } .t2 .tree-trunk{ width:16px; height:95px; }
 .tree.t3{ right:4%; } .t3 .tree-leaves{ width:130px; height:150px; } .t3 .tree-trunk{ width:22px; height:135px; }
 .tree.t4{ right:23%; bottom:40%; opacity:0.85; } .t4 .tree-leaves{ width:85px; height:100px; } .t4 .tree-trunk{ width:14px; height:85px; }
-
-/* Lekha */
 .content{position:relative; z-index:10; text-align:center; margin-top:-20vh; padding:20px;}
 .content h1{
   font-family:'Great Vibes', cursive; font-size: clamp(50px, 14vw, 88px);
@@ -70,7 +59,6 @@ body{
   backdrop-filter: blur(15px); transition:0.4s; box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 .next-btn:hover{ background: rgba(100,150,255,0.2); border-color:#8ab4ff; color:white; box-shadow:0 0 30px rgba(100,150,255,0.5); transform:translateY(-2px) scale(1.03);}
-
 @media (max-width: 650px){
   .tree.t2, .tree.t4{ display:none }
   .tree.t1 .tree-leaves{ width:80px; height:95px } .tree.t1 .tree-trunk{ height:90px; width:14px }
@@ -83,20 +71,16 @@ body{
 <div class="sky"></div>
 <div class="moon"></div>
 <div id="stars"></div>
-
 <div class="tree t1"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
 <div class="tree t2"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
 <div class="tree t3"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
 <div class="tree t4"><div class="tree-leaves"></div><div class="tree-trunk"></div></div>
-
 <div class="ground"></div>
-
 <div class="content">
   <h1>My World Mawya</h1>
   <p>YOU ARE MY UNIVERSE</p>
-  <a href="next.html" class="next-btn">NEXT →</a>
+  <a href="final.html" class="next-btn">NEXT →</a>
 </div>
-
 <script>
 const c=document.getElementById('stars');
 for(let i=0;i<100;i++){

@@ -8,22 +8,26 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#020211; color:white; font-family:'Poppins', sans-serif; min-height:100vh;}
-.sky{position:fixed; inset:0; background: radial-gradient(ellipse at top, #1a2a5e 0%, #0a1128 50%, #020211 100%); z-index:-2;}
+.sky{position:fixed; inset:0; background: radial-gradient(ellipse at bottom, #1e1b4b 0%, #0f0a1e 50%, #020211 100%); z-index:-2;}
+.moon{position:fixed; top:7%; right:12%; width:50px; height:50px; background:radial-gradient(circle at 30% 30%, #fff, #ddd); border-radius:50%; box-shadow:0 0 30px rgba(255,255,255,0.6);}
 .container{max-width:700px; margin:0 auto; padding:25px 15px; position:relative; z-index:5;}
-.header{text-align:center; margin-bottom:25px;}
-.header h1{font-family:'Great Vibes', cursive; font-size:60px; text-shadow:0 0 20px #ff4d6d;}
-.header .sub{opacity:0.9; font-size:15px; margin-top:10px; color:#ffb3c6; font-style:italic;}
-.gallery{display:grid; grid-template-columns: repeat(1, 1fr); gap:16px; margin-top:20px; max-width:400px; margin-left:auto; margin-right:auto;}
-.card{border-radius:18px; overflow:hidden; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); box-shadow:0 10px 30px rgba(0,0,0,0.3);}
-.card img{width:100%; height:auto; object-fit:cover; display:block;}
-.buttons{text-align:center; margin-top:30px; display:flex; gap:15px; justify-content:center;}
-.buttons a{padding:12px 30px; border-radius:25px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white; text-decoration:none; font-size:12px;}
-.buttons a.next{background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;}
-@media(max-width:600px){.header h1{font-size:48px;} .gallery{max-width:320px;} }
+.header{text-align:center; margin-bottom:20px;}
+.header h1{font-family:'Great Vibes', cursive; font-size:62px; color:#fff; text-shadow:0 0 20px #a78bfa;}
+.header .sub{color:#c4b5fd; font-style:italic; margin-top:8px;}
+.gallery{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; max-width:520px; margin:25px auto 0;}
+.card{border-radius:20px; overflow:hidden; aspect-ratio:4/5; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); box-shadow:0 10px 30px rgba(0,0,0,0.5); transition:0.4s;}
+.card:hover{transform:scale(1.03) rotate(1deg);}
+.card img{width:100%; height:100%; object-fit:cover;}
+.card:nth-child(3){grid-column: 1 / span 2; max-width:50%; margin:0 auto; width:100%;}
+.buttons{display:flex; gap:15px; justify-content:center; margin-top:35px;}
+.buttons a{padding:12px 32px; border-radius:30px; text-decoration:none; font-size:12px; letter-spacing:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:white;}
+.buttons a.next{background:linear-gradient(90deg,#8b5cf6,#c084fc); border:none; font-weight:bold; box-shadow:0 0 15px rgba(139,92,246,0.5);}
+@media(max-width:600px){.gallery{max-width:340px} .card:nth-child(3){max-width:49%} .header h1{font-size:52px}}
 </style>
 </head>
 <body>
 <div class="sky"></div>
+<div class="moon"></div>
 <div class="container">
   <div class="header">
     <h1>Memories</h1>
