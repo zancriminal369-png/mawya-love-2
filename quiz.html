@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret For Mawya 🔐</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100dvh; background:#020211; display:flex; justify-content:center; align-items:center; font-family:'Poppins',sans-serif; overflow:hidden; padding:15px;}
+.bg{position:fixed; inset:0; background: radial-gradient(ellipse at top, #2a1040 0%, #0f0a1e 45%, #020211 100%); z-index:0;}
+.stars{position:fixed; inset:0; z-index:1;}
+.star{position:absolute; width:2px; height:2px; background:white; border-radius:50%; opacity:0.5; animation: twinkle 2s infinite alternate;}
+@keyframes twinkle{0%{opacity:0.2} 100%{opacity:1}}
+
+.card{position:relative; z-index:5; width:100%; max-width:380px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(25px); border-radius:28px; padding:32px 26px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);}
+.lock-icon{width:68px; height:68px; background:linear-gradient(135deg,#ff4d6d,#ff8fab); border-radius:50%; display:flex; justify-content:center; align-items:center; margin:0 auto 18px; font-size:28px; box-shadow:0 0 30px rgba(255,77,109,0.5); animation: pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.08)}}
+h2{font-family:'Great Vibes'; font-size:42px; color:white; margin-bottom:6px;}
+p.sub{color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:1px; margin-bottom:24px;}
+.input-box{position:relative; margin-bottom:18px;}
+input{width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.3); color:white; font-size:15px; outline:none; text-align:center; letter-spacing:3px; transition:0.3s;}
+input:focus{border-color:#ff4d6d; box-shadow:0 0 0 3px rgba(255,77,109,0.2);}
+button{width:100%; padding:13px; border-radius:14px; border:none; background:linear-gradient(90deg,#ff4d6d,#ff8fab); color:white; font-weight:600; letter-spacing:1px; cursor:pointer; transition:0.3s; box-shadow:0 8px 20px rgba(255,77,109,0.4);}
+button:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(255,77,109,0.5);}
+.hint{margin-top:14px; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:0.5px;}
+.error{color:#ff6b8a; font-size:12px; margin-top:10px; display:none; animation: shake 0.4s;}
+@keyframes shake{0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)}}
+
+/* UNLOCKED PREMIUM VIEW */
+#unlocked{position:fixed; inset:0; z-index:20; background:#020211; display:none; justify-content:center; align-items:center; flex-direction:column; padding:20px; overflow:hidden;}
+#unlocked.active{display:flex; animation: fadeIn 1s ease;}
+@keyframes fadeIn{from{opacity:0} to{opacity:1}}
+.premium-bg{position:absolute; inset:0; background: radial-gradient(ellipse at center, #2a1040 0%, #020211 70%); z-index:0;}
+.heart-burst{position:absolute; inset:0; pointer-events:none; z-index:1;}
+.photo-wrap{position:relative; z-index:5; animation: zoomIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; transform:scale(0);}
+@keyframes zoomIn{0%{transform:scale(0) rotate(-10deg)} 100%{transform:scale(1) rotate(0deg)}}
+.photo-card{width: min(90vw, 360px); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:24px; padding:12px; backdrop-filter:blur(20px); box-shadow:0 25px 70px rgba(0,0,0,0.6), 0 0 40px rgba(255,77,109,0.3);}
+.photo-card img{width:100%; border-radius:18px; aspect-ratio:4/5; object-fit:cover; display:block;}
+.photo-text{margin-top:14px; text-align:center;}
+.photo-text h3{font-family:'Great Vibes'; font-size:36px; color:white; text-shadow:0 0 15px #ff4d6d;}
+.photo-text p{color:rgba(255,200,210,0.7); font-size:11px; letter-spacing:2px; margin-top:4px;}
+.confetti{position:absolute; width:8px; height:8px; animation: confettiFall linear forwards; z-index:2;}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg)} 100%{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars" id="stars"></div>
+
+<div class="card" id="lockCard">
+  <div class="lock-icon">🔐</div>
+  <h2>Secret Love</h2>
+  <p class="sub">ENTER OUR SECRET PASSWORD</p>
+  <div class="input-box">
+    <input type="password" id="passInput" placeholder="••••••••" maxlength="20">
+  </div>
+  <button onclick="checkPass()">UNLOCK MY HEART ❤️</button>
+  <div class="error" id="errorMsg">Wrong password baby 😢 try again!</div>
+  <div class="hint">Hint: My Love's Name + Our Year ❤️ (ex: MAWYA2024)</div>
+</div>
+
+<div id="unlocked">
+  <div class="premium-bg"></div>
+  <div class="heart-burst" id="burst"></div>
+  <div class="photo-wrap" id="photoWrap">
+    <div class="photo-card">
+      <img src="couple.jpg" id="coupleImg" onerror="this.src='https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=500'">
+      <div class="photo-text">
+        <h3>You & Me Forever ❤️</h3>
+        <p>MY WORLD IS YOU MAWYA</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==== CHANGE PASSWORD HERE ====
+const CORRECT_PASS = "mawya"; // <-- tumi j password chao oita choto hater e likho
+
+// stars
+const starsEl=document.getElementById('stars');
+for(let i=0;i<60;i++){ const s=document.createElement('div'); s.className='star'; s.style.left=Math.random()*100+'vw'; s.style.top=Math.random()*100+'vh'; s.style.animationDelay=Math.random()*2+'s'; starsEl.appendChild(s); }
+
+function checkPass(){
+  const val = document.getElementById('passInput').value.trim().toLowerCase();
+  const err = document.getElementById('errorMsg');
+  if(val === CORRECT_PASS){
+    unlockPremium();
+  } else {
+    err.style.display='block';
+    document.getElementById('lockCard').style.animation='shake 0.4s';
+    setTimeout(()=>{ document.getElementById('lockCard').style.animation=''; },400);
+    document.getElementById('passInput').value='';
+  }
+}
+document.getElementById('passInput').addEventListener('keypress', e=>{ if(e.key==='Enter') checkPass(); });
+
+function unlockPremium(){
+  const unlocked = document.getElementById('unlocked');
+  unlocked.classList.add('active');
+  
+  // confetti + hearts blast
+  for(let i=0;i<40;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div'); c.className='confetti';
+      c.style.left=Math.random()*100+'vw'; c.style.top='-10px';
+      c.style.background=['#ff4d6d','#ff8fab','#a78bfa','#fbbf24'][Math.floor(Math.random()*4)];
+      c.style.animationDuration=(Math.random()*2+3)+'s';
+      c.style.transform=`rotate(${Math.random()*360}deg)`;
+      c.style.borderRadius=Math.random()>0.5?'50%':'2px';
+      document.getElementById('burst').appendChild(c);
+      setTimeout(()=>c.remove(),5000);
+    }, i*60);
+  }
+  // floating hearts
+  setInterval(()=>{
+    const h=document.createElement('div');
+    h.style.position='fixed'; h.style.left=Math.random()*100+'vw'; h.style.bottom='-20px';
+    h.style.fontSize='18px'; h.innerText=['❤️','💖','✨','🌸'][Math.floor(Math.random()*4)];
+    h.style.zIndex=10; h.style.animation=`up 5s linear forwards`;
+    document.getElementById('burst').appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },200);
+  
+  // music
+  const music = new Audio("https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3");
+  music.loop=true; music.volume=0.6; music.play().catch(()=>{});
+}
+
+const style2=document.createElement('style');
+style2.innerHTML=`@keyframes up{0%{transform:translateY(0) scale(0.5); opacity:0} 15%{opacity:1} 100%{transform:translateY(-110vh) scale(1.2); opacity:0}}`;
+document.head.appendChild(style2);
+</script>
+</body>
+</html>
