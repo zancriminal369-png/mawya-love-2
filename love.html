@@ -14,32 +14,25 @@ body{min-height:100dvh; background:#020211; overflow:hidden; display:flex; justi
 .center-text h1{font-family:'Great Vibes'; font-size: clamp(38px, 10vw, 62px); color:white; text-shadow:0 0 20px #ff4d6d, 0 0 50px #ff1a4d; animation: beat 1.2s ease-in-out infinite;}
 @keyframes beat{0%,100%{transform:scale(1)} 50%{transform:scale(1.08)}}
 .btns{position:fixed; bottom:25px; left:50%; transform:translateX(-50%); z-index:10; display:flex; gap:12px;}
-.btns a{padding:10px 26px; border-radius:30px; text-decoration:none; font-size:11px; letter-spacing:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; backdrop-filter:blur(10px);}
+.btns a{padding:12px 26px; border-radius:30px; text-decoration:none; font-size:12px; letter-spacing:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; backdrop-filter:blur(10px);}
 </style>
 </head>
 <body>
 <div class="bg"></div>
 <canvas id="canvas"></canvas>
-
-<div class="center-text">
-  <h1>I Love You<br>Mawya ❤</h1>
-</div>
-
+<div class="center-text"><h1>I Love You<br>Mawya ❤</h1></div>
 <div class="btns">
   <a href="next.html">← BACK</a>
   <a href="quiz.html" style="background:linear-gradient(90deg,#ff4d6d,#ff8fab); border:none; font-weight:bold;">NEXT →</a>
 </div>
-
 <script>
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let W,H, hearts=[];
 function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
 window.addEventListener('resize', resize); resize();
-
 const text = "I LOVE YOU MAWYA ❤ ";
 let angle = 0;
-
 class Particle{
   constructor(i, total){
     this.i=i; this.total=total;
@@ -67,10 +60,8 @@ class Particle{
     ctx.restore();
   }
 }
-
 const total = 180;
 for(let i=0;i<total;i++) hearts.push(new Particle(i,total));
-
 function animate(){
   ctx.clearRect(0,0,W,H);
   angle += 0.008;
@@ -78,7 +69,6 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
-
 setInterval(()=>{
   const el=document.createElement('div');
   el.style.position='fixed'; el.style.left=Math.random()*100+'vw'; el.style.bottom='-20px';
@@ -89,11 +79,9 @@ setInterval(()=>{
   document.body.appendChild(el);
   setTimeout(()=>el.remove(), 10000);
 }, 300);
-
 const style=document.createElement('style');
 style.innerHTML=`@keyframes up{0%{transform:translateY(0) translateX(0) scale(0.5); opacity:0} 10%{opacity:1} 100%{transform:translateY(-110vh) translateX(30px) scale(1.2); opacity:0}}`;
 document.head.appendChild(style);
-
 const bgMusic = new Audio("https://cdn.pixabay.com/audio/2024/09/19/audio_b9bd4170e3.mp3");
 bgMusic.loop=true; bgMusic.volume=0.5;
 bgMusic.play().catch(()=>{ document.body.addEventListener('click',()=>bgMusic.play(),{once:true}) });
