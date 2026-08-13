@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Locked For Bou ❤</title>
+<title>Locked For Mawya ❤</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +38,7 @@ input{width:100%;padding:16px 20px;border-radius:50px;border:1px solid rgba(255,
 .frame{background:white;padding:12px 12px 40px 12px;border-radius:4px;box-shadow:0 30px 60px rgba(0,0,0,0.6)}
 .frame img{width:100%;height:340px;object-fit:cover;display:block}
 @media(max-width:600px){.frame img{height:240px}}
-.frame::after{content:'Bou ❤ My Love';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-family:'Great Vibes';font-size:18px;color:#ff4d6d}
+.frame::after{content:'Mawya ❤ My Love';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-family:'Great Vibes';font-size:18px;color:#ff4d6d}
 .glow{position:absolute;inset:-4px;background:linear-gradient(45deg,#ff4d6d,#ff8fab,#ff4d6d);border-radius:6px;z-index:-1;filter:blur(20px);opacity:0.6}
 .nextBtn{display:inline-block;margin-top:25px;padding:16px 45px;border-radius:50px;background:linear-gradient(90deg,#ff4d6d,#ff8fab);color:white;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(255,77,109,0.5)}
 .float{position:fixed;inset:0;pointer-events:none;z-index:30}
@@ -49,11 +49,11 @@ input{width:100%;padding:16px 20px;border-radius:50px;border:1px solid rgba(255,
 <body>
 <div class="bg"></div><div class="stars" id="stars"></div><div class="float" id="float"></div>
 <div class="lock-wrapper" id="lockWrapper"><div class="lock-box" id="lockBox"><div class="lock-icon" id="lockIcon">🔒</div><h1>Locked For You</h1><p class="sub">Enter the secret key</p><input type="text" id="pass" placeholder="password"><button class="btn" onclick="checkPass()">UNLOCK MY HEART ❤</button><p id="err" style="color:#ff6b8a;font-size:12px;margin-top:12px;height:14px"></p></div></div>
-<div id="unlockScene"><div class="big-heart">💖</div><div class="unlock-text">Unlocked... For You Bou</div></div>
-<div id="picReveal"><div class="reveal-container"><div class="reveal-title">My Love, Bou ❤</div><div class="pics"><div class="pic-card"><div class="glow"></div><div class="frame"><img src="1.jpg"></div></div><div class="pic-card"><div class="glow"></div><div class="frame"><img src="2.jpg"></div></div></div><a href="final.html" class="nextBtn">Continue Our Story →</a></div></div>
+<div id="unlockScene"><div class="big-heart">💖</div><div class="unlock-text">Unlocked... For You Mawya</div></div>
+<div id="picReveal"><div class="reveal-container"><div class="reveal-title">My Love, Mawya ❤</div><div class="pics"><div class="pic-card"><div class="glow"></div><div class="frame"><img src="1.jpg"></div></div><div class="pic-card"><div class="glow"></div><div class="frame"><img src="2.jpg"></div></div></div><a href="final.html" class="nextBtn">Continue Our Story →</a></div></div>
 <script>
 for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';s.style.animationDelay=Math.random()*3+'s';document.getElementById('stars').appendChild(s)}
-function checkPass(){const p=document.getElementById('pass').value.trim().toLowerCase();if(p==='mawya'||p==='Bou2024'){unlock()}else{document.getElementById('err').innerText='Wrong password! Try Bou ❤';document.getElementById('lockBox').classList.add('shake');setTimeout(()=>document.getElementById('lockBox').classList.remove('shake'),500)}}
+function checkPass(){const p=document.getElementById('pass').value.trim().toLowerCase();if(p==='mawya'||p==='mawya2024'){unlock()}else{document.getElementById('err').innerText='Wrong password! Try mawya ❤';document.getElementById('lockBox').classList.add('shake');setTimeout(()=>document.getElementById('lockBox').classList.remove('shake'),500)}}
 document.getElementById('pass').addEventListener('keypress',e=>{if(e.key==='Enter')checkPass()});
 function unlock(){document.getElementById('lockIcon').innerText='🔓';for(let i=0;i<3;i++){const r=document.createElement('div');r.className='ring';r.style.left='50%';r.style.top='50%';r.style.transform='translate(-50%,-50%)';r.style.animationDelay=i*0.2+'s';document.getElementById('unlockScene').appendChild(r)}document.getElementById('lockWrapper').style.transform='scale(1.5)';document.getElementById('lockWrapper').style.opacity='0';setTimeout(()=>{document.getElementById('lockWrapper').style.display='none';document.getElementById('unlockScene').style.display='flex';for(let i=0;i<30;i++)setTimeout(createEmoji,i*50)},600);setTimeout(()=>{document.getElementById('unlockScene').style.opacity='0';document.getElementById('unlockScene').style.transform='scale(1.5)';document.getElementById('unlockScene').style.transition='all 0.8s';setTimeout(()=>{document.getElementById('unlockScene').style.display='none';document.getElementById('picReveal').style.display='block';setInterval(createEmoji,300)},800)},2500)}
 function createEmoji(){const el=document.createElement('div');el.className='emoji';el.innerText=['❤','💖','🌹','💝','🥰','💕'][Math.floor(Math.random()*6)];el.style.left=Math.random()*95+'vw';el.style.fontSize=(18+Math.random()*18)+'px';el.style.animationDuration=(5+Math.random()*3)+'s';document.getElementById('float').appendChild(el);setTimeout(()=>el.remove(),8000)}
