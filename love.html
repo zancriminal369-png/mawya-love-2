@@ -3,61 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>I Love You Bou ❤</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>For My Bou ❤</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{margin:0;background:#05010a;overflow:hidden;height:100vh;display:flex;justify-content:center;align-items:center;font-family:'Poppins'}
-.bg{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%, #2a0a2a 0%, #1a0530 30%, #05010a 80%)}
-.scene{position:relative;z-index:2;text-align:center;padding:15px;width:100%;max-width:400px}
-.heart3d{width:120px;height:108px;position:relative;margin:0 auto 20px;animation:beat3d 1s infinite ease-in-out;filter:drop-shadow(0 0 20px #ff2d75) drop-shadow(0 0 40px #ff2d75);transform-style:preserve-3d}
-.heart3d:before,.heart3d:after{content:"";position:absolute;width:60px;height:96px;background:linear-gradient(180deg,#ff4d8d,#ff0a54);border-radius:60px 60px 0 0;box-shadow:inset -5px -5px 15px rgba(0,0,0,0.4), inset 5px 5px 10px rgba(255,255,255,0.3)}
-.heart3d:before{left:60px;transform:rotate(-45deg);transform-origin:0 100%}
-.heart3d:after{left:0;transform:rotate(45deg);transform-origin:100% 100%}
-@keyframes beat3d{0%{transform:scale(1) rotateX(10deg)}20%{transform:scale(1.15) rotateX(-10deg)}40%{transform:scale(0.95) rotateX(10deg)}60%{transform:scale(1.1) rotateX(-5deg)}100%{transform:scale(1) rotateX(10deg)}}
-h1{font-family:'Great Vibes';font-size:56px;color:#ff8fab;text-shadow:0 0 20px #ff2d75,0 0 40px #ff2d75;margin-top:10px;line-height:1.1}
-.sub{color:#ffd1dc;font-size:14px;margin:10px 0 20px;letter-spacing:1px;opacity:0.9}
-.btns{display:flex;gap:10px;justify-content:center;margin-top:25px}
-.btns a{padding:12px 26px;border-radius:30px;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.5px}
-.back{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;backdrop-filter:blur(10px)}
-.next{background:linear-gradient(90deg,#ff0a54,#ff5d8f);color:white;box-shadow:0 0 25px rgba(255,10,84,0.6)}
-.particle{position:fixed;bottom:-20px;pointer-events:none;z-index:5;animation:rise linear forwards}
-@keyframes rise{0%{transform:translateY(0) translateX(0) scale(0.5) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(-110vh) translateX(var(--x)) scale(1.2) rotate(360deg);opacity:0}}
-.ring{position:absolute;left:50%;top:50%;border:1px solid rgba(255,100,150,0.15);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
-.r1{width:200px;height:200px;animation:pulseRing 2s infinite}
-.r2{width:300px;height:300px;animation:pulseRing 2s infinite 0.5s}
-.r3{width:400px;height:400px;animation:pulseRing 2s infinite 1s}
-@keyframes pulseRing{0%{transform:translate(-50%,-50%) scale(0.8);opacity:0.8}100%{transform:translate(-50%,-50%) scale(1.3);opacity:0}}
-@media(max-width:380px){h1{font-size:48px}.heart3d{width:100px;height:90px}.heart3d:before,.heart3d:after{width:50px;height:80px}.heart3d:before{left:50px}}
+body{margin:0;background:#080010;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;font-family:'Poppins'}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 20%, #3a0a4a 0%, #1a0533 35%, #080010 75%)}
+.center{position:relative;z-index:10;text-align:center;width:100%;max-width:420px;padding:20px}
+.heart-wrap{position:relative;width:180px;height:160px;margin:0 auto 10px;perspective:1000px}
+.heart-main{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:float3d 3s ease-in-out infinite}
+@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-8deg) rotateX(10deg)}50%{transform:translateY(-15px) rotateY(8deg) rotateX(-5deg)}}
+.heart-layer{position:absolute;inset:0;transform-style:preserve-3d}
+.heart-layer:nth-child(1){transform:translateZ(0px)}
+.heart-layer:nth-child(2){transform:translateZ(8px);opacity:0.8}
+.heart-layer:nth-child(3){transform:translateZ(16px);opacity:0.6}
+.heart-layer:nth-child(4){transform:translateZ(24px);opacity:0.4}
+.heart-layer:nth-child(5){transform:translateZ(32px);opacity:0.2}
+.h{position:absolute;width:90px;height:144px;background:linear-gradient(180deg,#ff5d9e,#ff0a54,#d0004c);border-radius:90px 90px 0 0;left:50%;top:10px;box-shadow:inset -8px -8px 20px rgba(0,0,0,0.5), inset 8px 8px 15px rgba(255,255,255,0.3), 0 0 30px rgba(255,10,84,0.8)}
+.h1{transform:translateX(-12px) rotate(-45deg);transform-origin:0 100%}
+.h2{transform:translateX(-78px) rotate(45deg);transform-origin:100% 100%}
+.beat{animation:beat 0.9s ease-in-out infinite}
+@keyframes beat{0%{transform:translateX(-12px) rotate(-45deg) scale(1)}14%{transform:translateX(-12px) rotate(-45deg) scale(1.15)}28%{transform:translateX(-12px) rotate(-45deg) scale(1)}42%{transform:translateX(-12px) rotate(-45deg) scale(1.15)}70%{transform:translateX(-12px) rotate(-45deg) scale(1)}}
+.beat2{animation:beat2 0.9s ease-in-out infinite}
+@keyframes beat2{0%{transform:translateX(-78px) rotate(45deg) scale(1)}14%{transform:translateX(-78px) rotate(45deg) scale(1.15)}28%{transform:translateX(-78px) rotate(45deg) scale(1)}42%{transform:translateX(-78px) rotate(45deg) scale(1.15)}70%{transform:translateX(-78px) rotate(45deg) scale(1)}}
+.glow{position:absolute;width:220px;height:220px;left:50%;top:50%;transform:translate(-50%,-45%);background:radial-gradient(circle, rgba(255,10,84,0.4) 0%, rgba(255,10,84,0) 70%);border-radius:50%;animation:glowPulse 0.9s infinite;filter:blur(10px)}
+@keyframes glowPulse{0%,100%{transform:translate(-50%,-45%) scale(0.9);opacity:0.6}50%{transform:translate(-50%,-45%) scale(1.2);opacity:1}}
+.ring{position:absolute;left:50%;top:48%;width:200px;height:200px;border:1px solid rgba(255,100,150,0.12);border-radius:50%;transform:translate(-50%,-50%);animation:ring 2.5s infinite}
+.ring2{width:300px;height:300px;animation-delay:0.8s}
+.ring3{width:400px;height:400px;animation-delay:1.6s}
+@keyframes ring{0%{transform:translate(-50%,-50%) scale(0.7);opacity:1}100%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
+.title{font-family:'Great Vibes';font-size:62px;color:#ff8fab;text-shadow:0 0 15px #ff0a54,0 0 35px #ff0a54,0 0 60px rgba(255,10,84,0.5);line-height:0.9;margin-top:5px;animation:titleGlow 2s infinite}
+@keyframes titleGlow{0%,100%{text-shadow:0 0 15px #ff0a54,0 0 35px #ff0a54}50%{text-shadow:0 0 25px #ff0a54,0 0 60px #ff0a54,0 0 90px #ff0a54}}
+.sub{color:#ffb3c6;font-size:13px;letter-spacing:3px;margin:12px 0 5px;text-transform:uppercase;opacity:0.8}
+.bou{font-family:'Great Vibes';font-size:28px;color:white;opacity:0.9;margin-top:5px;text-shadow:0 0 10px rgba(255,255,255,0.5)}
+.btns{margin-top:28px;display:flex;gap:12px;justify-content:center}
+.btns a{padding:12px 26px;border-radius:30px;text-decoration:none;font-size:12px;font-weight:600;backdrop-filter:blur(10px);transition:0.3s}
+.back{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white}
+.back:hover{background:rgba(255,255,255,0.12)}
+.next{background:linear-gradient(90deg,#ff0a54,#ff5d8f);color:white;box-shadow:0 0 25px rgba(255,10,84,0.7), inset 0 1px 0 rgba(255,255,255,0.3);animation:btnPulse 1.5s infinite}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 25px rgba(255,10,84,0.7)}50%{box-shadow:0 0 40px rgba(255,10,84,1), 0 0 60px rgba(255,10,84,0.5)}}
+.sparkle{position:fixed;pointer-events:none;animation:sparkleUp linear forwards}
+@keyframes sparkleUp{0%{transform:translateY(0) scale(0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(-110vh) scale(1.5) rotate(720deg);opacity:0}}
+@media(max-width:380px){.heart-wrap{width:150px;height:135px}.h{width:75px;height:120px}.h1{transform:translateX(-10px) rotate(-45deg)}.h2{transform:translateX(-65px) rotate(45deg)}.title{font-size:52px}}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-<div style="position:fixed;left:50%;top:45%;transform:translate(-50%,-50%)">
-<div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+<div class="ring"></div><div class="ring ring2"></div><div class="ring ring3"></div>
+<div class="center">
+<div class="heart-wrap">
+<div class="glow"></div>
+<div class="heart-main">
+<div class="heart-layer"><div class="h h1 beat"></div><div class="h h2 beat2"></div></div>
+<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.1)"></div><div class="h h2 beat2" style="filter:brightness(1.1)"></div></div>
+<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.2)"></div><div class="h h2 beat2" style="filter:brightness(1.2)"></div></div>
+<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.3)"></div><div class="h h2 beat2" style="filter:brightness(1.3)"></div></div>
 </div>
-<div class="scene">
-<div class="heart3d"></div>
-<h1>I Love You<br>Bou ❤</h1>
-<p class="sub">Tumi amar sob, amar koliza</p>
+</div>
+<div class="title">I Love You</div>
+<div class="bou">Bou ❤</div>
+<div class="sub">My Everything • My Koliza</div>
 <div class="btns">
 <a href="final.html" class="back">← BACK</a>
-<a href="quiz.html" class="next">NEXT →</a>
+<a href="quiz.html" class="next">NEXT MAGIC →</a>
 </div>
 </div>
 <script>
+const icons=['❤','💖','💕','🌹','✨','💝','🥰','💘','🌸','💗'];
 setInterval(()=>{
- const e=document.createElement('div');e.className='particle';
- const types=['❤','💖','💕','🌹','✨','💝','🥰'];
- e.innerText=types[Math.floor(Math.random()*types.length)];
- e.style.left=Math.random()*100+'vw';
- e.style.fontSize=(14+Math.random()*22)+'px';
- e.style.setProperty('--x',(Math.random()*200-100)+'px');
- e.style.animationDuration=(3+Math.random()*4)+'s';
- e.style.filter='drop-shadow(0 0 6px #ff4d8d)';
- document.body.appendChild(e);
- setTimeout(()=>e.remove(),7000);
-},180);
+ const s=document.createElement('div');s.className='sparkle';
+ s.innerText=icons[Math.floor(Math.random()*icons.length)];
+ s.style.left=Math.random()*100+'vw';s.style.bottom='-20px';
+ s.style.fontSize=(10+Math.random()*24)+'px';
+ s.style.animationDuration=(3+Math.random()*4)+'s';
+ s.style.filter='drop-shadow(0 0 8px #ff2d75)';
+ s.style.transform=`translateX(${(Math.random()*200-100)}px)`;
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),7000);
+},150);
+setInterval(()=>{
+ const h=document.querySelector('.heart-main');
+ h.style.animation='none';void h.offsetWidth;h.style.animation='float3d 3s ease-in-out infinite';
+},3000);
 </script>
 </body>
 </html>
