@@ -3,88 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>For My Bou ❤</title>
+<title>I Love You Bou ❤</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{margin:0;background:#080010;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;font-family:'Poppins'}
-.bg{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 20%, #3a0a4a 0%, #1a0533 35%, #080010 75%)}
-.center{position:relative;z-index:10;text-align:center;width:100%;max-width:420px;padding:20px}
-.heart-wrap{position:relative;width:180px;height:160px;margin:0 auto 10px;perspective:1000px}
-.heart-main{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:float3d 3s ease-in-out infinite}
-@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-8deg) rotateX(10deg)}50%{transform:translateY(-15px) rotateY(8deg) rotateX(-5deg)}}
-.heart-layer{position:absolute;inset:0;transform-style:preserve-3d}
-.heart-layer:nth-child(1){transform:translateZ(0px)}
-.heart-layer:nth-child(2){transform:translateZ(8px);opacity:0.8}
-.heart-layer:nth-child(3){transform:translateZ(16px);opacity:0.6}
-.heart-layer:nth-child(4){transform:translateZ(24px);opacity:0.4}
-.heart-layer:nth-child(5){transform:translateZ(32px);opacity:0.2}
-.h{position:absolute;width:90px;height:144px;background:linear-gradient(180deg,#ff5d9e,#ff0a54,#d0004c);border-radius:90px 90px 0 0;left:50%;top:10px;box-shadow:inset -8px -8px 20px rgba(0,0,0,0.5), inset 8px 8px 15px rgba(255,255,255,0.3), 0 0 30px rgba(255,10,84,0.8)}
-.h1{transform:translateX(-12px) rotate(-45deg);transform-origin:0 100%}
-.h2{transform:translateX(-78px) rotate(45deg);transform-origin:100% 100%}
-.beat{animation:beat 0.9s ease-in-out infinite}
-@keyframes beat{0%{transform:translateX(-12px) rotate(-45deg) scale(1)}14%{transform:translateX(-12px) rotate(-45deg) scale(1.15)}28%{transform:translateX(-12px) rotate(-45deg) scale(1)}42%{transform:translateX(-12px) rotate(-45deg) scale(1.15)}70%{transform:translateX(-12px) rotate(-45deg) scale(1)}}
-.beat2{animation:beat2 0.9s ease-in-out infinite}
-@keyframes beat2{0%{transform:translateX(-78px) rotate(45deg) scale(1)}14%{transform:translateX(-78px) rotate(45deg) scale(1.15)}28%{transform:translateX(-78px) rotate(45deg) scale(1)}42%{transform:translateX(-78px) rotate(45deg) scale(1.15)}70%{transform:translateX(-78px) rotate(45deg) scale(1)}}
-.glow{position:absolute;width:220px;height:220px;left:50%;top:50%;transform:translate(-50%,-45%);background:radial-gradient(circle, rgba(255,10,84,0.4) 0%, rgba(255,10,84,0) 70%);border-radius:50%;animation:glowPulse 0.9s infinite;filter:blur(10px)}
-@keyframes glowPulse{0%,100%{transform:translate(-50%,-45%) scale(0.9);opacity:0.6}50%{transform:translate(-50%,-45%) scale(1.2);opacity:1}}
-.ring{position:absolute;left:50%;top:48%;width:200px;height:200px;border:1px solid rgba(255,100,150,0.12);border-radius:50%;transform:translate(-50%,-50%);animation:ring 2.5s infinite}
-.ring2{width:300px;height:300px;animation-delay:0.8s}
-.ring3{width:400px;height:400px;animation-delay:1.6s}
-@keyframes ring{0%{transform:translate(-50%,-50%) scale(0.7);opacity:1}100%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
-.title{font-family:'Great Vibes';font-size:62px;color:#ff8fab;text-shadow:0 0 15px #ff0a54,0 0 35px #ff0a54,0 0 60px rgba(255,10,84,0.5);line-height:0.9;margin-top:5px;animation:titleGlow 2s infinite}
-@keyframes titleGlow{0%,100%{text-shadow:0 0 15px #ff0a54,0 0 35px #ff0a54}50%{text-shadow:0 0 25px #ff0a54,0 0 60px #ff0a54,0 0 90px #ff0a54}}
-.sub{color:#ffb3c6;font-size:13px;letter-spacing:3px;margin:12px 0 5px;text-transform:uppercase;opacity:0.8}
-.bou{font-family:'Great Vibes';font-size:28px;color:white;opacity:0.9;margin-top:5px;text-shadow:0 0 10px rgba(255,255,255,0.5)}
-.btns{margin-top:28px;display:flex;gap:12px;justify-content:center}
-.btns a{padding:12px 26px;border-radius:30px;text-decoration:none;font-size:12px;font-weight:600;backdrop-filter:blur(10px);transition:0.3s}
-.back{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:white}
-.back:hover{background:rgba(255,255,255,0.12)}
-.next{background:linear-gradient(90deg,#ff0a54,#ff5d8f);color:white;box-shadow:0 0 25px rgba(255,10,84,0.7), inset 0 1px 0 rgba(255,255,255,0.3);animation:btnPulse 1.5s infinite}
-@keyframes btnPulse{0%,100%{box-shadow:0 0 25px rgba(255,10,84,0.7)}50%{box-shadow:0 0 40px rgba(255,10,84,1), 0 0 60px rgba(255,10,84,0.5)}}
-.sparkle{position:fixed;pointer-events:none;animation:sparkleUp linear forwards}
-@keyframes sparkleUp{0%{transform:translateY(0) scale(0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(-110vh) scale(1.5) rotate(720deg);opacity:0}}
-@media(max-width:380px){.heart-wrap{width:150px;height:135px}.h{width:75px;height:120px}.h1{transform:translateX(-10px) rotate(-45deg)}.h2{transform:translateX(-65px) rotate(45deg)}.title{font-size:52px}}
+body{margin:0;background:#080010;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at center, #1f0a2e 0%, #0f0520 40%, #05010a 100%)}
+.center{position:relative;z-index:5;text-align:center}
+.main-heart{width:140px;height:126px;position:relative;margin:0 auto;animation:mainBeat 1s infinite;filter:drop-shadow(0 0 20px #ff0a54) drop-shadow(0 0 50px #ff0a54)}
+.main-heart:before,.main-heart:after{content:"";position:absolute;width:70px;height:112px;background:linear-gradient(180deg,#ff5d9e,#ff0a54);border-radius:70px 70px 0 0}
+.main-heart:before{left:70px;transform:rotate(-45deg);transform-origin:0 100%}
+.main-heart:after{left:0;transform:rotate(45deg);transform-origin:100% 100%}
+@keyframes mainBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.title{font-family:'Great Vibes';font-size:58px;color:#ff8fab;text-shadow:0 0 20px #ff0a54,0 0 40px #ff0a54;line-height:0.9;margin-top:20px}
+.title2{font-family:'Great Vibes';font-size:52px;color:white;text-shadow:0 0 15px #ff8fab;margin-top:-5px}
+.orbit{position:fixed;left:50%;top:50%;width:0;height:0;pointer-events:none;z-index:2}
+.orbit-item{position:absolute;left:0;top:0;font-family:'Poppins';font-weight:600;font-size:14px;color:rgba(255,143,171,0.9);text-shadow:0 0 10px #ff0a54;white-space:nowrap;transform-origin:0 0}
+.o1{animation:orbit1 8s linear infinite}
+.o2{animation:orbit2 10s linear infinite}
+.o3{animation:orbit3 12s linear infinite}
+.o4{animation:orbit4 9s linear infinite}
+.o5{animation:orbit5 11s linear infinite}
+.o6{animation:orbit6 13s linear infinite}
+@keyframes orbit1{from{transform:rotate(0deg) translateX(140px) rotate(0deg)}to{transform:rotate(360deg) translateX(140px) rotate(-360deg)}}
+@keyframes orbit2{from{transform:rotate(60deg) translateX(180px) rotate(-60deg)}to{transform:rotate(420deg) translateX(180px) rotate(-420deg)}}
+@keyframes orbit3{from{transform:rotate(120deg) translateX(220px) rotate(-120deg)}to{transform:rotate(480deg) translateX(220px) rotate(-480deg)}}
+@keyframes orbit4{from{transform:rotate(180deg) translateX(160px) rotate(-180deg)}to{transform:rotate(540deg) translateX(160px) rotate(-540deg)}}
+@keyframes orbit5{from{transform:rotate(240deg) translateX(200px) rotate(-240deg)}to{transform:rotate(600deg) translateX(200px) rotate(-240deg)}}
+@keyframes orbit6{from{transform:rotate(300deg) translateX(250px) rotate(-300deg)}to{transform:rotate(660deg) translateX(250px) rotate(-660deg)}}
+.btns{margin-top:30px;display:flex;gap:12px;justify-content:center;position:relative;z-index:10}
+.btns a{padding:12px 28px;border-radius:30px;text-decoration:none;font-family:'Poppins';font-size:12px;font-weight:600}
+.back{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;backdrop-filter:blur(10px)}
+.next{background:linear-gradient(90deg,#ff0a54,#ff5d8f);color:white;box-shadow:0 0 25px rgba(255,10,84,0.7)}
+.particle{position:fixed;bottom:-20px;pointer-events:none;z-index:3;animation:up linear forwards}
+@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@media(max-width:420px){.title{font-size:46px}.title2{font-size:40px}.orbit-item{font-size:11px}
+@keyframes orbit1{from{transform:rotate(0deg) translateX(105px) rotate(0deg)}to{transform:rotate(360deg) translateX(105px) rotate(-360deg)}}
+@keyframes orbit2{from{transform:rotate(60deg) translateX(125px) rotate(-60deg)}to{transform:rotate(420deg) translateX(125px) rotate(-420deg)}}
+@keyframes orbit3{from{transform:rotate(120deg) translateX(145px) rotate(-120deg)}to{transform:rotate(480deg) translateX(145px) rotate(-480deg)}}
+@keyframes orbit4{from{transform:rotate(180deg) translateX(115px) rotate(-180deg)}to{transform:rotate(540deg) translateX(115px) rotate(-180deg)}}
+@keyframes orbit5{from{transform:rotate(240deg) translateX(135px) rotate(-240deg)}to{transform:rotate(600deg) translateX(135px) rotate(-240deg)}}
+@keyframes orbit6{from{transform:rotate(300deg) translateX(155px) rotate(-300deg)}to{transform:rotate(660deg) translateX(155px) rotate(-660deg)}}
+}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-<div class="ring"></div><div class="ring ring2"></div><div class="ring ring3"></div>
+<div class="orbit" id="orbit">
+<div class="orbit-item o1">Koliza Pakhi 💖</div>
+<div class="orbit-item o2">Amr Koliza Pakhi Bou 🌹</div>
+<div class="orbit-item o3">Meo 😘</div>
+<div class="orbit-item o4">Amr Meo 💕</div>
+<div class="orbit-item o5">Amr Bou ❤</div>
+<div class="orbit-item o6">Amr Jibon 💝</div>
+<div class="orbit-item o1" style="animation-delay:-1s">Koliza ❤</div>
+<div class="orbit-item o2" style="animation-delay:-2s">Pakhi 🕊️</div>
+<div class="orbit-item o3" style="animation-delay:-3s">Amr Pakhi 🌸</div>
+<div class="orbit-item o4" style="animation-delay:-1.5s">Amr Koliza 💖</div>
+<div class="orbit-item o5" style="animation-delay:-2.5s">Meo Meo 😻</div>
+<div class="orbit-item o6" style="animation-delay:-3.5s">Amr Jibon Pakhi ✨</div>
+<div class="orbit-item o1" style="animation-delay:-2s">Amr Meo Bou 💖</div>
+<div class="orbit-item o2" style="animation-delay:-4s">I Love You Bou ❤</div>
+<div class="orbit-item o3" style="animation-delay:-0.5s">My Everything 🌹</div>
+<div class="orbit-item o4" style="animation-delay:-4.5s">Amr Koliza Bou 💝</div>
+</div>
 <div class="center">
-<div class="heart-wrap">
-<div class="glow"></div>
-<div class="heart-main">
-<div class="heart-layer"><div class="h h1 beat"></div><div class="h h2 beat2"></div></div>
-<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.1)"></div><div class="h h2 beat2" style="filter:brightness(1.1)"></div></div>
-<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.2)"></div><div class="h h2 beat2" style="filter:brightness(1.2)"></div></div>
-<div class="heart-layer"><div class="h h1 beat" style="filter:brightness(1.3)"></div><div class="h h2 beat2" style="filter:brightness(1.3)"></div></div>
-</div>
-</div>
+<div class="main-heart"></div>
 <div class="title">I Love You</div>
-<div class="bou">Bou ❤</div>
-<div class="sub">My Everything • My Koliza</div>
+<div class="title2">Bou ❤</div>
 <div class="btns">
 <a href="final.html" class="back">← BACK</a>
-<a href="quiz.html" class="next">NEXT MAGIC →</a>
+<a href="quiz.html" class="next">NEXT →</a>
 </div>
 </div>
 <script>
-const icons=['❤','💖','💕','🌹','✨','💝','🥰','💘','🌸','💗'];
+const loves=['Koliza Pakhi','Amr Koliza Pakhi Bou','Meo','Amr Meo','Amr Bou','Amr Jibon','I Love You Bou','My Koliza Pakhi','Amr Pakhi','Koliza','Jibon','Meo Meo','Amr Meo Bou','Bou ❤','Amr Jibon Pakhi','Pakhi','Amr Koliza','Amr Jan','My Meo','Bou Jan'];
 setInterval(()=>{
- const s=document.createElement('div');s.className='sparkle';
- s.innerText=icons[Math.floor(Math.random()*icons.length)];
- s.style.left=Math.random()*100+'vw';s.style.bottom='-20px';
- s.style.fontSize=(10+Math.random()*24)+'px';
- s.style.animationDuration=(3+Math.random()*4)+'s';
- s.style.filter='drop-shadow(0 0 8px #ff2d75)';
- s.style.transform=`translateX(${(Math.random()*200-100)}px)`;
- document.body.appendChild(s);
- setTimeout(()=>s.remove(),7000);
-},150);
+ const e=document.createElement('div');e.className='particle';
+ e.innerText=['❤','💖','🌹','✨','💕','🥰','💘'][Math.floor(Math.random()*7)];
+ e.style.left=Math.random()*100+'vw';e.style.fontSize=(14+Math.random()*20)+'px';e.style.animationDuration=(3+Math.random()*3)+'s';e.style.filter='drop-shadow(0 0 6px #ff0a54)';
+ document.body.appendChild(e);setTimeout(()=>e.remove(),6000);
+},200);
 setInterval(()=>{
- const h=document.querySelector('.heart-main');
- h.style.animation='none';void h.offsetWidth;h.style.animation='float3d 3s ease-in-out infinite';
-},3000);
+ const o=document.getElementById('orbit');
+ const d=document.createElement('div');d.className='orbit-item';
+ const r=1+Math.floor(Math.random()*6);
+ d.style.animation=`orbit${r} ${7+Math.random()*6}s linear infinite`;
+ d.innerText=loves[Math.floor(Math.random()*loves.length)]+' ' + ['❤','💖','🌹','💕','✨'][Math.floor(Math.random()*5)];
+ d.style.fontSize=(10+Math.random()*5)+'px';
+ d.style.color=`hsl(${340+Math.random()*20}, 100%, ${70+Math.random()*15}%)`;
+ o.appendChild(d);setTimeout(()=>d.remove(),13000);
+},900);
 </script>
 </body>
 </html>
