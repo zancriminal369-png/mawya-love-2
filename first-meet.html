@@ -78,7 +78,7 @@ let cur=1,total=6;
 function nextPic(){
  document.getElementById('p'+cur).classList.remove('active');
  cur++;
- if(cur>total){location.href='index.html';return;}
+ if(cur>total){location.href='meo.html';return;}
  if(cur==total) document.getElementById('nextBtn').innerText='REPLAY ❤';
  document.getElementById('p'+cur).classList.add('active');
  document.getElementById('counter').innerText=cur+' / '+total;
